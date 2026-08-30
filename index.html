@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
 
 <title>Hi Baby 💗</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -21,45 +28,77 @@ html, body {
     background: #080b48;
 }
 
+body {
+    touch-action: manipulation;
+}
+
 #app {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
+
+
+/* =========================
+   PAGES
+   ========================= */
 
 .page {
     position: absolute;
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     display: none;
+    overflow: hidden;
 }
 
 .page.active {
     display: block;
 }
 
+
+/* =========================
+   IMAGES
+   ========================= */
+
 .page img {
+    position: absolute;
+    inset: 0;
+
     width: 100%;
     height: 100%;
-    object-fit: cover;
+
     display: block;
+
+    object-fit: cover;
+    object-position: center;
 }
 
-/* INVISIBLE CLICK AREA */
+
+/* =========================
+   INVISIBLE CLICKABLE AREAS
+   ========================= */
 
 .button {
     position: absolute;
-    z-index: 20;
+
+    z-index: 100;
+
+    display: block;
 
     border: none;
     outline: none;
+
     padding: 0;
     margin: 0;
 
     background: transparent;
 
     cursor: pointer;
+
     touch-action: manipulation;
 
     -webkit-appearance: none;
@@ -69,103 +108,146 @@ html, body {
 
 /* =========================
    PAGE 1
+   START HERE
    ========================= */
-
-/*
-   Invisible area over the
-   START HERE button in image
-*/
 
 .start-button {
     left: 10%;
-    bottom: 7%;
+    top: 72%;
+
     width: 80%;
-    height: 13%;
+    height: 14%;
 }
 
 
 /* =========================
    PAGE 2
+   OPEN
    ========================= */
 
 .open-button {
     left: 10%;
-    bottom: 7%;
+    top: 70%;
+
     width: 80%;
-    height: 13%;
+    height: 14%;
 }
 
 
 /* =========================
+   PAGE 3
    MENU
    ========================= */
-
-.menu-button {
-    left: 10%;
-    width: 80%;
-    height: 9%;
-
-    background: transparent;
-}
 
 
 /* SAD */
 
 .sad-button {
+    left: 10%;
     top: 31%;
+
+    width: 80%;
+    height: 9%;
 }
 
 
-/* MAD */
+/* YOU'RE MAD */
 
 .mad-button {
+    left: 10%;
     top: 40%;
+
+    width: 80%;
+    height: 9%;
 }
 
 
-/* MISS YOU */
+/* YOU MISS ME */
 
 .miss-button {
+    left: 10%;
     top: 49%;
+
+    width: 80%;
+    height: 9%;
 }
 
 
-/* JEALOUS */
+/* YOU'RE JEALOUS */
 
 .jealous-button {
+    left: 10%;
     top: 58%;
+
+    width: 80%;
+    height: 9%;
 }
 
 
 /* =========================
-   BACK BUTTON
+   PAGE 4, 5, 6
+   GO BACK
    ========================= */
 
 .back-button {
     left: 5%;
     bottom: 6%;
+
     width: 65%;
     height: 12%;
 }
 
 
 /* =========================
-   FINAL
+   PAGE 7
+   AND THE LAST ONE
+   ========================= */
+
+.last-button {
+    left: 5%;
+    bottom: 6%;
+
+    width: 65%;
+    height: 12%;
+}
+
+
+/* =========================
+   PAGE 8
+   GO BACK TO START
    ========================= */
 
 .home-button {
     left: 20%;
     bottom: 4%;
+
     width: 60%;
-    height: 11%;
+    height: 12%;
+}
+
+
+/* =========================
+   LANDSCAPE
+   ========================= */
+
+@media (min-aspect-ratio: 1/1) {
+
+    .page img {
+        object-fit: contain;
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- MUSIC -->
+
+<!-- =========================
+     MUSIC
+     ========================= -->
 
 <audio
     id="music"
@@ -186,9 +268,9 @@ html, body {
 
     <img
         src="./page1.jpg"
-        alt="Hi Baby">
+        alt="Page 1">
 
-    <!-- INVISIBLE BUTTON -->
+    <!-- START HERE -->
 
     <button
         type="button"
@@ -198,6 +280,7 @@ html, body {
     </button>
 
 </section>
+
 
 
 <!-- =========================
@@ -210,165 +293,187 @@ html, body {
         src="./page2.jpg"
         alt="Page 2">
 
-    <!-- INVISIBLE BUTTON -->
+    <!-- OPEN -->
 
     <button
         type="button"
         class="button open-button"
         aria-label="Open"
-        onclick="showPage('menu')">
+        onclick="showPage('page3')">
     </button>
 
 </section>
 
 
+
 <!-- =========================
+     PAGE 3
      MENU
      ========================= -->
 
-<section class="page menu">
+<section class="page page3">
 
     <img
         src="./menu.jpg"
-        alt="Menu">
+        alt="Page 3">
 
 
     <!-- SAD -->
 
     <button
         type="button"
-        class="button menu-button sad-button"
+        class="button sad-button"
         aria-label="Sad"
-        onclick="showPage('sad')">
+        onclick="showPage('page4')">
     </button>
 
 
-    <!-- MAD -->
+    <!-- YOU'RE MAD -->
 
     <button
         type="button"
-        class="button menu-button mad-button"
-        aria-label="Mad"
-        onclick="showPage('mad')">
+        class="button mad-button"
+        aria-label="You're Mad"
+        onclick="showPage('page5')">
     </button>
 
 
-    <!-- MISS YOU -->
+    <!-- YOU MISS ME -->
 
     <button
         type="button"
-        class="button menu-button miss-button"
-        aria-label="Miss You"
-        onclick="showPage('miss')">
+        class="button miss-button"
+        aria-label="You Miss Me"
+        onclick="showPage('page6')">
     </button>
 
 
-    <!-- JEALOUS -->
+    <!-- YOU'RE JEALOUS -->
 
     <button
         type="button"
-        class="button menu-button jealous-button"
-        aria-label="Jealous"
-        onclick="showPage('jealous')">
+        class="button jealous-button"
+        aria-label="You're Jealous"
+        onclick="showPage('page7')">
     </button>
 
 </section>
 
 
+
 <!-- =========================
+     PAGE 4
      SAD
      ========================= -->
 
-<section class="page sad">
+<section class="page page4">
 
     <img
         src="./sad.jpg"
-        alt="Sad">
+        alt="Page 4">
+
+    <!-- GO BACK -->
 
     <button
         type="button"
         class="button back-button"
         aria-label="Go Back"
-        onclick="showPage('menu')">
+        onclick="showPage('page3')">
     </button>
 
 </section>
 
 
+
 <!-- =========================
+     PAGE 5
      MAD
      ========================= -->
 
-<section class="page mad">
+<section class="page page5">
 
     <img
         src="./mad.jpg"
-        alt="Mad">
+        alt="Page 5">
+
+    <!-- GO BACK -->
 
     <button
         type="button"
         class="button back-button"
         aria-label="Go Back"
-        onclick="showPage('menu')">
+        onclick="showPage('page3')">
     </button>
 
 </section>
 
 
+
 <!-- =========================
+     PAGE 6
      MISS YOU
      ========================= -->
 
-<section class="page miss">
+<section class="page page6">
 
     <img
         src="./miss-you.jpg"
-        alt="Miss You">
+        alt="Page 6">
+
+    <!-- GO BACK -->
 
     <button
         type="button"
         class="button back-button"
         aria-label="Go Back"
-        onclick="showPage('menu')">
+        onclick="showPage('page3')">
     </button>
 
 </section>
 
 
+
 <!-- =========================
+     PAGE 7
      JEALOUS
      ========================= -->
 
-<section class="page jealous">
+<section class="page page7">
 
     <img
         src="./jealous.jpg"
-        alt="Jealous">
+        alt="Page 7">
+
+    <!-- AND THE LAST ONE -->
 
     <button
         type="button"
-        class="button back-button"
-        aria-label="Go Back"
-        onclick="showPage('menu')">
+        class="button last-button"
+        aria-label="And The Last One"
+        onclick="showPage('page8')">
     </button>
 
 </section>
 
 
+
 <!-- =========================
+     PAGE 8
      FINAL
      ========================= -->
 
-<section class="page final">
+<section class="page page8">
 
     <img
         src="./final.jpg"
-        alt="Final">
+        alt="Page 8">
+
+    <!-- GO BACK TO START -->
 
     <button
         type="button"
         class="button home-button"
-        aria-label="Back to Start"
+        aria-label="Go Back To Start"
         onclick="showPage('page1')">
     </button>
 
@@ -378,20 +483,37 @@ html, body {
 </div>
 
 
+
 <script>
 
+/* =========================
+   PAGES
+   ========================= */
+
 const pages = document.querySelectorAll(".page");
-const music = document.getElementById("music");
 
 
 /* =========================
    MUSIC
    ========================= */
 
+const music = document.getElementById("music");
+
+/* MUSIC = 25% */
+
+music.volume = 0.25;
+
+
+/* =========================
+   START MUSIC
+   ========================= */
+
 function startMusic() {
 
-    music.play().catch(function() {
+    music.volume = 0.25;
 
+    music.play().catch(function() {
+        // Mobile browser autoplay protection
     });
 
 }
@@ -403,33 +525,50 @@ function startMusic() {
 
 function showPage(pageName) {
 
+    /* Start music after user's tap */
     startMusic();
 
+
+    /* Hide every page */
+
     pages.forEach(function(page) {
+
         page.classList.remove("active");
+
     });
+
+
+    /* Show selected page */
 
     const target =
         document.querySelector("." + pageName);
 
+
     if (target) {
+
         target.classList.add("active");
+
     }
 
 }
 
 
 /* =========================
-   START MUSIC WHEN TAPPED
+   FIRST TOUCH
    ========================= */
 
 document.addEventListener(
     "pointerdown",
-    startMusic,
+    function() {
+
+        startMusic();
+
+    },
     { once: true }
 );
 
 </script>
 
+
 </body>
-</html>
+    </html>
