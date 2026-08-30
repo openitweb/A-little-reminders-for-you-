@@ -12,628 +12,300 @@
 <title>A Little Reminder ♡</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
-body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-    background:#07073e;
-    overflow:hidden;
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #07073e;
+    overflow: hidden;
 }
 
-body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#app{
-    position:relative;
-    width:100vw;
-    height:100vh;
-    max-width:800px;
-    overflow:hidden;
-    background:#07073e;
+#app {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: 800px;
+    overflow: hidden;
+    background: #07073e;
 }
 
 /* =========================
    PAGES
 ========================= */
 
-.page{
-    position:absolute;
-    inset:0;
-    display:none;
+.page {
+    position: absolute;
+    inset: 0;
+    display: none;
 }
 
-.page.active{
-    display:block;
+.page.active {
+    display: block;
 }
 
-.page img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
+.page img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* =========================
    INVISIBLE CLICKABLE BUTTONS
 ========================= */
 
-.hotspot{
-    position:absolute;
-    display:block;
-    z-index:10;
+.hotspot {
+    position: absolute;
+    display: block;
+    z-index: 10;
 
-    background:transparent;
-    border:none;
-    outline:none;
+    background: transparent;
+    border: none;
+    outline: none;
 
-    cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
 }
 
 /* =========================
    MUSIC BUTTON
 ========================= */
 
-#musicBtn{
+#musicBtn {
+    position: fixed;
 
-    position:fixed;
+    right: 16px;
+    bottom: 18px;
 
-    right:16px;
-    bottom:18px;
+    z-index: 9999;
 
-    z-index:1000;
+    width: 52px;
+    height: 52px;
 
-    width:52px;
-    height:52px;
+    border: 2px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
 
-    border:2px solid rgba(255,255,255,.8);
+    background: rgba(20,10,70,0.75);
 
-    border-radius:50%;
+    color: white;
 
-    background:rgba(20,10,70,.75);
+    font-size: 24px;
 
-    color:white;
-
-    font-size:24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     box-shadow:
-        0 3px 14px rgba(0,0,0,.45);
+        0 3px 14px rgba(0,0,0,0.45);
 
-    display:flex;
+    cursor: pointer;
 
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
-#musicBtn:active{
-    transform:scale(.92);
+#musicBtn:active {
+    transform: scale(0.94);
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div id="app">
 
-
-<!-- ==================================================
-     PAGE 1
-     START HERE
-================================================== -->
-
-<section class="page active" id="p1">
-
-    <img
-        src="1000023352.png"
-        alt="A Little Reminder">
-
-    <!-- START HERE -->
-    <button
-        class="hotspot"
-        style="
-            left:15%;
-            top:73%;
-            width:70%;
-            height:8%;
-        "
-        aria-label="Start here"
-        onclick="go(2)">
-    </button>
-
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 2
-     OPEN
-================================================== -->
-
-<section class="page" id="p2">
-
-    <img
-        src="1000023353.png"
-        alt="Open">
-
-    <!-- OPEN -->
-    <button
-        class="hotspot"
-        style="
-            left:22%;
-            top:72%;
-            width:58%;
-            height:9%;
-        "
-        aria-label="Open"
-        onclick="go(3)">
-    </button>
-
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 3
-     OPEN THIS WHEN
-================================================== -->
-
-<section class="page" id="p3">
-
-    <img
-        src="1000023349.png"
-        alt="Open this when">
-
-    <!-- YOU'RE SAD -->
-    <button
-        class="hotspot"
-        style="
-            left:17%;
-            top:34%;
-            width:67%;
-            height:8%;
-        "
-        aria-label="You're sad"
-        onclick="go(4)">
-    </button>
-
-
-    <!-- YOU'RE MAD -->
-    <button
-        class="hotspot"
-        style="
-            left:17%;
-            top:42%;
-            width:67%;
-            height:8%;
-        "
-        aria-label="You're mad"
-        onclick="go(5)">
-    </button>
-
-
-    <!-- YOU MISS ME -->
-    <button
-        class="hotspot"
-        style="
-            left:17%;
-            top:50%;
-            width:67%;
-            height:8%;
-        "
-        aria-label="You miss me"
-        onclick="go(6)">
-    </button>
-
-
-    <!-- YOU'RE JEALOUS -->
-    <button
-        class="hotspot"
-        style="
-            left:17%;
-            top:58%;
-            width:67%;
-            height:8%;
-        "
-        aria-label="You're jealous"
-        onclick="go(7)">
-    </button>
-
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 4
-     SAD
-================================================== -->
-
-<section class="page" id="p4">
-
-    <img
-        src="1000023348.png"
-        alt="When you're sad">
-
-    <!-- GO BACK -->
-    <button
-        class="hotspot"
-        style="
-            left:8%;
-            top:78%;
-            width:55%;
-            height:9%;
-        "
-        aria-label="Go back"
-        onclick="go(3)">
-    </button>
-
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 5
-     MAD
-================================================== -->
-
-<section class="page" id="p5">
-
-    <img
-        src="1000023355.png"
-        alt="When you're mad">
-
-    <!-- GO BACK -->
-    <button
-        class="hotspot"
-        style="
-            left:7%;
-            top:78%;
-            width:55%;
-            height:9%;
-        "
-        aria-label="Go back"
-        onclick="go(3)">
-    </button>
-
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 6
-     MISS ME
-================================================== -->
-
-<section class="page" id="p6">
-
-    <img
-        src="1000023354.png"
-        alt="When you miss me">
-
-    <!-- GO BACK -->
-    <button
-        class="hotspot"
-        style="
-            left:7%;
-            top:78%;
-            width:55%;
-            height:9%;
-        "
-        aria-label="Go back"
-        onclick="go(3)">
-    </button>
-
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 7
-     JEALOUS
-================================================== -->
-
-<section class="page" id="p7">
-
-    <img
-        src="1000023350.png"
-        alt="When you're jealous">
-
-    <!-- AND THE LAST ONE -->
-    <button
-        class="hotspot"
-        style="
-            left:8%;
-            top:78%;
-            width:57%;
-            height:9%;
-        "
-        aria-label="And the last one"
-        onclick="go(8)">
-    </button>
-
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 8
-     BEFORE YOU GO
-================================================== -->
-
-<section class="page" id="p8">
-
-    <img
-        src="1000023351.png"
-        alt="Before you go">
-
-    <!-- BACK TO START -->
-    <button
-        class="hotspot"
-        style="
-            left:24%;
-            top:86%;
-            width:53%;
-            height:7%;
-        "
-        aria-label="Back to start"
-        onclick="go(1)">
-    </button>
-
-</section>
-
-
-</div>
-
-
-
-<!-- ==================================================
-     BACKGROUND MUSIC
-================================================== -->
-
-<audio
-    id="bgMusic"
-    loop
-    preload="auto">
-
-    <source
-        src="music.mp3"
-        type="audio/mpeg">
-
-</audio>
-
-
-
-<!-- ==================================================
-     MUSIC BUTTON
-================================================== -->
-
-<button
-    id="musicBtn"
-    type="button"
-    aria-label="Play music"
-    onclick="toggleMusic()">
-
-    🔇
-
-</button>
-
-
-
-<script>
-
-/* =====================================================
-   MUSIC
-===================================================== */
-
-const music =
-    document.getElementById("bgMusic");
-
-const musicBtn =
-    document.getElementById("musicBtn");
-
-let musicStarted = false;
-
-
-/* Change music button icon */
-
-function updateMusicButton(){
-
-    if(music.paused){
-
-        musicBtn.textContent = "🔇";
-
-        musicBtn.setAttribute(
-            "aria-label",
-            "Play music"
-        );
-
-    }else{
-
-        musicBtn.textContent = "🔊";
-
-        musicBtn.setAttribute(
-            "aria-label",
-            "Pause music"
-        );
-
-    }
-
-}
-
-
-/* Start music */
-
-function playMusic(){
-
-    music.volume = 0.65;
-
-    const promise = music.play();
-
-    if(promise !== undefined){
-
-        promise
-        .then(function(){
-
-            musicStarted = true;
-
-            updateMusicButton();
-
-        })
-        .catch(function(){
-
-            /*
-              Some phones/browser block
-              automatic playback.
-
-              The music will start after
-              the first tap.
-            */
-
-            updateMusicButton();
-
-        });
-
-    }
-
-}
-
-
-/* Play / Pause */
-
-function toggleMusic(){
-
-    if(music.paused){
-
-        playMusic();
-
-    }else{
-
-        music.pause();
-
-        updateMusicButton();
-
-    }
-
-}
-
-
-/* =====================================================
-   PAGE NAVIGATION
-===================================================== */
-
-function go(pageNumber){
-
-    /*
-      Start music when a button is pressed.
-      This is important because mobile browsers
-      usually allow audio after user interaction.
-    */
-
-    if(!musicStarted){
-
-        playMusic();
-
-    }
-
-
-    /* Hide all pages */
-
-    document
-        .querySelectorAll(".page")
-        .forEach(function(page){
-
-            page.classList.remove("active");
-
-        });
-
-
-    /* Show selected page */
-
-    const selectedPage =
-        document.getElementById(
-            "p" + pageNumber
-        );
-
-    if(selectedPage){
-
-        selectedPage.classList.add("active");
-
-    }
-
-}
-
-
-/* =====================================================
-   TRY AUTOPLAY WHEN WEBSITE OPENS
-===================================================== */
-
-window.addEventListener(
-    "load",
-    function(){
-
-        playMusic();
-
-    }
-);
-
-
-/*
-   If autoplay is blocked,
-   the first touch anywhere on the website
-   will start the music.
-*/
-
-document.addEventListener(
-    "pointerdown",
-    function(){
-
-        if(!musicStarted){
-
-            playMusic();
-
-        }
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-/* Keep button icon updated */
-
-music.addEventListener(
-    "play",
-    updateMusicButton
-);
-
-music.addEventListener(
-    "pause",
-    updateMusicButton
-);
-
-
-/* Initial icon */
-
-updateMusicButton();
-
-</script>
-
-</body>
-          </html>
+    <!-- ==================================================
+         PAGE 1
+    =================================================== -->
+
+    <section class="page active" id="p1">
+
+        <img
+            src="1000023352.png"
+            alt="A Little Reminder"
+        >
+
+        <!-- START HERE -->
+
+        <button
+            class="hotspot"
+            style="
+                left:15%;
+                top:73%;
+                width:70%;
+                height:8%;
+            "
+            aria-label="Start here"
+            onclick="go(2)"
+        ></button>
+
+    </section>
+
+
+    <!-- ==================================================
+         PAGE 2
+    =================================================== -->
+
+    <section class="page" id="p2">
+
+        <img
+            src="1000023353.png"
+            alt="Open"
+        >
+
+        <!-- OPEN -->
+
+        <button
+            class="hotspot"
+            style="
+                left:22%;
+                top:72%;
+                width:58%;
+                height:9%;
+            "
+            aria-label="Open"
+            onclick="go(3)"
+        ></button>
+
+    </section>
+
+
+    <!-- ==================================================
+         PAGE 3 - CHOICES
+    =================================================== -->
+
+    <section class="page" id="p3">
+
+        <img
+            src="1000023349.png"
+            alt="Open this when"
+        >
+
+
+        <!-- YOU'RE SAD -->
+
+        <button
+            class="hotspot"
+            style="
+                left:17%;
+                top:34%;
+                width:67%;
+                height:8%;
+            "
+            aria-label="You're sad"
+            onclick="go(4)"
+        ></button>
+
+
+        <!-- YOU'RE MAD -->
+
+        <button
+            class="hotspot"
+            style="
+                left:17%;
+                top:42%;
+                width:67%;
+                height:8%;
+            "
+            aria-label="You're mad"
+            onclick="go(5)"
+        ></button>
+
+
+        <!-- YOU MISS ME -->
+
+        <button
+            class="hotspot"
+            style="
+                left:17%;
+                top:50%;
+                width:67%;
+                height:8%;
+            "
+            aria-label="You miss me"
+            onclick="go(6)"
+        ></button>
+
+
+        <!-- YOU'RE JEALOUS -->
+
+        <button
+            class="hotspot"
+            style="
+                left:17%;
+                top:58%;
+                width:67%;
+                height:8%;
+            "
+            aria-label="You're jealous"
+            onclick="go(7)"
+        ></button>
+
+    </section>
+
+
+    <!-- ==================================================
+         PAGE 4 - SAD
+    =================================================== -->
+
+    <section class="page" id="p4">
+
+        <img
+            src="1000023348.png"
+            alt="When you're sad"
+        >
+
+        <!-- GO BACK -->
+
+        <button
+            class="hotspot"
+            style="
+                left:8%;
+                top:78%;
+                width:55%;
+                height:9%;
+            "
+            aria-label="Go back"
+            onclick="go(3)"
+        ></button>
+
+    </section>
+
+
+    <!-- ==================================================
+         PAGE 5 - MAD
+    =================================================== -->
+
+    <section class="page" id="p5">
+
+        <img
+            src="1000023355.png"
+            alt="When you're mad"
+        >
+
+        <!-- GO BACK -->
+
+        <button
+            class="hotspot"
+            style="
+                left:7%;
+                top:78%;
+                width:55%;
+                height:9%;
+            "
+            aria
