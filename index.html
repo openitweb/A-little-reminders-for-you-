@@ -79,7 +79,7 @@ body {
 
 
 /* =========================
-   PAGE IMAGES
+   IMAGES
    ========================= */
 
 .page img {
@@ -98,11 +98,10 @@ body {
 
 
 /* =========================
-   INVISIBLE BUTTONS
+   INVISIBLE CLICKABLE AREAS
    ========================= */
 
 .button {
-
     position: absolute;
 
     z-index: 100;
@@ -132,7 +131,6 @@ body {
    ========================= */
 
 .start-button {
-
     left: 10%;
     top: 72%;
 
@@ -147,7 +145,6 @@ body {
    ========================= */
 
 .open-button {
-
     left: 10%;
     top: 70%;
 
@@ -165,7 +162,6 @@ body {
 /* SAD */
 
 .sad-button {
-
     left: 10%;
     top: 31%;
 
@@ -177,7 +173,6 @@ body {
 /* YOU'RE MAD */
 
 .mad-button {
-
     left: 10%;
     top: 40%;
 
@@ -189,7 +184,6 @@ body {
 /* YOU MISS ME */
 
 .miss-button {
-
     left: 10%;
     top: 49%;
 
@@ -201,7 +195,6 @@ body {
 /* YOU'RE JEALOUS */
 
 .jealous-button {
-
     left: 10%;
     top: 58%;
 
@@ -216,7 +209,6 @@ body {
    ========================= */
 
 .page4 .back-button {
-
     left: 5%;
     bottom: 6%;
 
@@ -228,11 +220,9 @@ body {
 /* =========================
    PAGE 5
    GO BACK
-   SLIGHTLY HIGHER
    ========================= */
 
 .page5 .back-button {
-
     left: 5%;
     bottom: 9%;
 
@@ -244,13 +234,12 @@ body {
 /* =========================
    PAGE 6
    GO BACK
-   SLIGHTLY HIGHER
+   RAISED ANOTHER 3%
    ========================= */
 
 .page6 .back-button {
-
     left: 5%;
-    bottom: 9%;
+    bottom: 12%;
 
     width: 65%;
     height: 12%;
@@ -263,7 +252,6 @@ body {
    ========================= */
 
 .last-button {
-
     left: 5%;
     bottom: 6%;
 
@@ -278,7 +266,6 @@ body {
    ========================= */
 
 .home-button {
-
     left: 20%;
     bottom: 4%;
 
@@ -314,8 +301,7 @@ body {
 <audio
     id="music"
     src="./music.mp3"
-    preload="auto"
-    loop>
+    preload="auto">
 </audio>
 
 
@@ -332,17 +318,14 @@ body {
         src="./page1.jpg"
         alt="Page 1">
 
-    <!-- START HERE -->
-
     <button
         type="button"
         class="button start-button"
         aria-label="Start Here"
-        onclick="showPage('page2')">
+        onclick="startExperience('page2')">
     </button>
 
 </section>
-
 
 
 <!-- =========================
@@ -355,8 +338,6 @@ body {
         src="./page2.jpg"
         alt="Page 2">
 
-    <!-- OPEN -->
-
     <button
         type="button"
         class="button open-button"
@@ -365,7 +346,6 @@ body {
     </button>
 
 </section>
-
 
 
 <!-- =========================
@@ -379,18 +359,12 @@ body {
         src="./menu.jpg"
         alt="Page 3">
 
-
-    <!-- SAD -->
-
     <button
         type="button"
         class="button sad-button"
         aria-label="Sad"
         onclick="showPage('page4')">
     </button>
-
-
-    <!-- YOU'RE MAD -->
 
     <button
         type="button"
@@ -399,18 +373,12 @@ body {
         onclick="showPage('page5')">
     </button>
 
-
-    <!-- YOU MISS ME -->
-
     <button
         type="button"
         class="button miss-button"
         aria-label="You Miss Me"
         onclick="showPage('page6')">
     </button>
-
-
-    <!-- YOU'RE JEALOUS -->
 
     <button
         type="button"
@@ -420,7 +388,6 @@ body {
     </button>
 
 </section>
-
 
 
 <!-- =========================
@@ -434,9 +401,6 @@ body {
         src="./sad.jpg"
         alt="Page 4">
 
-
-    <!-- GO BACK -->
-
     <button
         type="button"
         class="button back-button"
@@ -445,7 +409,6 @@ body {
     </button>
 
 </section>
-
 
 
 <!-- =========================
@@ -459,9 +422,6 @@ body {
         src="./mad.jpg"
         alt="Page 5">
 
-
-    <!-- GO BACK -->
-
     <button
         type="button"
         class="button back-button"
@@ -470,7 +430,6 @@ body {
     </button>
 
 </section>
-
 
 
 <!-- =========================
@@ -484,9 +443,6 @@ body {
         src="./miss-you.jpg"
         alt="Page 6">
 
-
-    <!-- GO BACK -->
-
     <button
         type="button"
         class="button back-button"
@@ -495,7 +451,6 @@ body {
     </button>
 
 </section>
-
 
 
 <!-- =========================
@@ -509,9 +464,6 @@ body {
         src="./jealous.jpg"
         alt="Page 7">
 
-
-    <!-- AND THE LAST ONE -->
-
     <button
         type="button"
         class="button last-button"
@@ -520,7 +472,6 @@ body {
     </button>
 
 </section>
-
 
 
 <!-- =========================
@@ -534,14 +485,11 @@ body {
         src="./final.jpg"
         alt="Page 8">
 
-
-    <!-- GO BACK TO START -->
-
     <button
         type="button"
         class="button home-button"
         aria-label="Go Back To Start"
-        onclick="showPage('page1')">
+        onclick="goBackToStart()">
     </button>
 
 </section>
@@ -553,7 +501,7 @@ body {
 <script>
 
 /* =========================
-   GET ALL PAGES
+   PAGES
    ========================= */
 
 const pages =
@@ -562,42 +510,61 @@ const pages =
 
 /* =========================
    MUSIC
-   25% VOLUME
    ========================= */
 
 const music =
     document.getElementById("music");
 
+
+/* 25% VOLUME */
+
 music.volume = 0.25;
 
 
+/* IMPORTANT:
+   No loop.
+   Music will play only once.
+*/
+
+music.loop = false;
+
+
 /* =========================
-   PRELOAD MUSIC
+   MUSIC STATE
    ========================= */
 
-music.load();
+let musicStarted = false;
 
 
 /* =========================
-   START MUSIC
+   START EXPERIENCE
    ========================= */
 
-function startMusic() {
+function startExperience(pageName) {
 
-    music.volume = 0.25;
+    /*
+       Music starts only once,
+       when START HERE is pressed.
+    */
 
-    const playPromise =
-        music.play();
+    if (!musicStarted) {
 
-    if (playPromise !== undefined) {
+        musicStarted = true;
 
-        playPromise.catch(function() {
+        music.volume = 0.25;
 
-            /* Browser autoplay protection */
+        music.currentTime = 0;
+
+        music.play().catch(function() {
+
+            musicStarted = false;
 
         });
 
     }
+
+
+    showPage(pageName);
 
 }
 
@@ -608,14 +575,6 @@ function startMusic() {
 
 function showPage(pageName) {
 
-    /* Start music immediately
-       after the user's tap */
-
-    startMusic();
-
-
-    /* Hide all pages */
-
     pages.forEach(function(page) {
 
         page.classList.remove("active");
@@ -623,13 +582,9 @@ function showPage(pageName) {
     });
 
 
-    /* Find requested page */
-
     const target =
         document.querySelector("." + pageName);
 
-
-    /* Show requested page */
 
     if (target) {
 
@@ -639,8 +594,43 @@ function showPage(pageName) {
 
 }
 
+
+/* =========================
+   PAGE 8
+   GO BACK TO START
+   ========================= */
+
+function goBackToStart() {
+
+    /*
+       Return to Page 1,
+       but DO NOT restart music.
+    */
+
+    showPage("page1");
+
+}
+
+
+/* =========================
+   PREVENT MUSIC FROM
+   STARTING AGAIN
+   ========================= */
+
+music.addEventListener("ended", function() {
+
+    /*
+       Music has finished.
+       It will NOT repeat.
+    */
+
+    music.pause();
+
+});
+
 </script>
 
 
 </body>
+
           </html>
