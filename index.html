@@ -83,8 +83,8 @@ body {
    ========================= */
 
 .page img {
+.page img {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
@@ -94,8 +94,13 @@ body {
 
     object-fit: cover;
     object-position: center;
-}
 
+    image-rendering: auto;
+    image-rendering: -webkit-optimize-contrast;
+
+    backface-visibility: hidden;
+    transform: translateZ(0);
+      }
 
 /* =========================
    INVISIBLE CLICKABLE AREAS
