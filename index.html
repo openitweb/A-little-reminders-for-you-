@@ -15,9 +15,9 @@ user-scalable=no">
 
 <style>
 
-/* ================================
-   RESET
-================================ */
+/* ==========================================
+   BASIC RESET
+========================================== */
 
 * {
     margin: 0;
@@ -29,19 +29,21 @@ html,
 body {
     width: 100%;
     height: 100%;
+
     overflow: hidden;
-}
 
-body {
     background: #ffffff;
+
+    touch-action: manipulation;
 }
 
 
-/* ================================
+/* ==========================================
    PAGE
-================================ */
+========================================== */
 
 .page {
+
     position: fixed;
 
     inset: 0;
@@ -61,26 +63,47 @@ body {
 }
 
 
-/* ================================
-   IMAGE
+/* ==========================================
+   400 × 800 DESIGN CANVAS
+========================================== */
 
-   Fills screen.
-   No pink sides.
-================================ */
+.canvas {
 
-.page-image {
     position: absolute;
+
+    width: 400px;
+    height: 800px;
 
     left: 50%;
     top: 50%;
 
-    width: 100vw;
-    height: 100vh;
+    transform:
+        translate(-50%, -50%)
+        scale(var(--scale));
 
-    transform: translate(-50%, -50%);
+    transform-origin: center center;
 
-    object-fit: cover;
-    object-position: center;
+    overflow: hidden;
+}
+
+
+/* ==========================================
+   IMAGE
+
+   EXACTLY 400 × 800
+========================================== */
+
+.page-image {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 400px;
+    height: 800px;
+
+    object-fit: fill;
 
     display: block;
 
@@ -92,20 +115,23 @@ body {
 }
 
 
-/* ================================
-   INVISIBLE RECTANGLE BUTTON
-================================ */
+/* ==========================================
+   TRANSPARENT RECTANGULAR HITBOX
+
+   ONLY THESE ARE CLICKABLE
+========================================== */
 
 .click {
+
     position: absolute;
 
     display: block;
 
     background: transparent;
 
-    border: 0;
+    border: none;
 
-    outline: 0;
+    outline: none;
 
     z-index: 9999;
 
@@ -114,62 +140,86 @@ body {
     touch-action: manipulation;
 
     -webkit-tap-highlight-color: transparent;
+
+    text-decoration: none;
 }
 
 
-/* =================================================
+/* ==========================================
    PAGE 1
    START HERE
-   BOTTOM CENTER
-================================================= */
+
+   SIZE:
+   268 × 48
+
+   CENTER
+
+   160px FROM BOTTOM
+
+   top = 800 - 160 - 48
+       = 592
+========================================== */
 
 .page1-button {
 
-    width: 160px;
-    height: 55px;
+    width: 268px;
+    height: 48px;
 
-    left: 50%;
-    top: 77%;
+    left: 66px;
 
-    transform: translateX(-50%);
+    top: 592px;
 }
 
 
-/* =================================================
+/* ==========================================
    PAGE 2
-   NEXT
-   BOTTOM CENTER
-================================================= */
+   OPEN
+
+   SIZE:
+   210 × 42
+
+   CENTER
+
+   130px FROM BOTTOM
+
+   top = 800 - 130 - 42
+       = 628
+========================================== */
 
 .page2-button {
 
-    width: 160px;
-    height: 55px;
+    width: 210px;
+    height: 42px;
 
-    left: 50%;
-    top: 77%;
+    left: 95px;
 
-    transform: translateX(-50%);
+    top: 628px;
 }
 
 
-/* =================================================
+/* ==========================================
    PAGE 3
-   FOUR EMOTION BUTTONS
-================================================= */
+   EMOTION BUTTONS
+
+   SIZE:
+   248 × 44
+
+   CENTER
+
+   4 BUTTONS
+========================================== */
 
 
 /* YOU'RE SAD */
 
 .page3-sad {
 
-    width: 145px;
-    height: 52px;
+    width: 248px;
+    height: 44px;
 
-    left: 50%;
-    top: 34%;
+    left: 76px;
 
-    transform: translateX(-50%);
+    top: 300px;
 }
 
 
@@ -177,13 +227,12 @@ body {
 
 .page3-mad {
 
-    width: 145px;
-    height: 52px;
+    width: 248px;
+    height: 44px;
 
-    left: 50%;
-    top: 45%;
+    left: 76px;
 
-    transform: translateX(-50%);
+    top: 360px;
 }
 
 
@@ -191,13 +240,12 @@ body {
 
 .page3-miss {
 
-    width: 145px;
-    height: 52px;
+    width: 248px;
+    height: 44px;
 
-    left: 50%;
-    top: 56%;
+    left: 76px;
 
-    transform: translateX(-50%);
+    top: 420px;
 }
 
 
@@ -205,182 +253,162 @@ body {
 
 .page3-jealous {
 
-    width: 145px;
-    height: 52px;
+    width: 248px;
+    height: 44px;
 
-    left: 50%;
-    top: 62%;
+    left: 76px;
 
-    transform: translateX(-50%);
+    top: 480px;
 }
 
 
-/* =================================================
+/* ==========================================
    PAGE 4
    GO BACK
-================================================= */
+
+   SIZE:
+   210 × 42
+
+   LEFT
+
+   80px FROM BOTTOM
+
+   top = 800 - 80 - 42
+       = 678
+========================================== */
 
 .page4-button {
 
-    width: 135px;
-    height: 52px;
+    width: 210px;
+    height: 42px;
 
-    left: 50%;
-    top: 83%;
+    left: 15px;
 
-    transform: translateX(-50%);
+    top: 678px;
 }
 
 
-/* =================================================
+/* ==========================================
    PAGE 5
    GO BACK
-================================================= */
+
+   SIZE:
+   210 × 42
+
+   LEFT
+
+   80px FROM BOTTOM
+========================================== */
 
 .page5-button {
 
-    width: 135px;
-    height: 52px;
+    width: 210px;
+    height: 42px;
 
-    left: 50%;
-    top: 80%;
+    left: 15px;
 
-    transform: translateX(-50%);
+    top: 678px;
 }
 
 
-/* =================================================
+/* ==========================================
    PAGE 6
    GO BACK
-================================================= */
+
+   SIZE:
+   210 × 42
+
+   LEFT
+
+   80px FROM BOTTOM
+========================================== */
 
 .page6-button {
 
-    width: 135px;
-    height: 52px;
+    width: 210px;
+    height: 42px;
 
-    left: 50%;
-    top: 75%;
+    left: 15px;
 
-    transform: translateX(-50%);
+    top: 678px;
 }
 
 
-/* =================================================
+/* ==========================================
    PAGE 7
    AND THE LAST ONE
-================================================= */
+
+   SIZE:
+   210 × 42
+
+   LEFT
+
+   115px FROM BOTTOM
+
+   top = 800 - 115 - 42
+       = 643
+========================================== */
 
 .page7-button {
 
-    width: 160px;
-    height: 52px;
+    width: 210px;
+    height: 42px;
 
-    left: 50%;
-    top: 82%;
+    left: 15px;
 
-    transform: translateX(-50%);
+    top: 643px;
 }
 
 
-/* =================================================
+/* ==========================================
    PAGE 8
    BACK TO START
-================================================= */
+
+   SIZE:
+   148 × 30
+
+   RIGHT
+
+   110px FROM BOTTOM
+
+   right = 15px
+
+   left = 400 - 15 - 148
+       = 237px
+
+   top = 800 - 110 - 30
+       = 660
+========================================== */
 
 .page8-button {
 
-    width: 155px;
-    height: 52px;
+    width: 148px;
+    height: 30px;
 
-    left: 50%;
-    top: 82%;
+    left: 237px;
 
-    transform: translateX(-50%);
+    top: 660px;
 }
 
 
-/* ================================
-   MUSIC CONTROL
-================================ */
+/* ==========================================
+   PREVENT IMAGE DRAGGING
+========================================== */
 
-.music-button {
-
-    position: fixed;
-
-    top: 10px;
-    right: 10px;
-
-    width: 40px;
-    height: 40px;
-
-    z-index: 10000;
-
-    border: 2px solid white;
-
-    background: #e978a7;
-
-    color: white;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    touch-action: manipulation;
-
-    -webkit-tap-highlight-color: transparent;
+img {
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 
-/* ================================
-   MOBILE
-================================ */
+/* ==========================================
+   NO SCROLLING
+========================================== */
 
-@media (max-width: 600px) {
-
-    .page-image {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-    }
-
-
-    .page1-button,
-    .page2-button {
-        width: 150px;
-        height: 55px;
-    }
-
-
-    .page3-sad,
-    .page3-mad,
-    .page3-miss,
-    .page3-jealous {
-        width: 140px;
-        height: 52px;
-    }
-
-
-    .page4-button,
-    .page5-button,
-    .page6-button {
-        width: 130px;
-        height: 50px;
-    }
-
-
-    .page7-button,
-    .page8-button {
-        width: 150px;
-        height: 50px;
-    }
-
-
-    .music-button {
-        width: 38px;
-        height: 38px;
-    }
-
+body,
+.page,
+.canvas {
+    overscroll-behavior: none;
 }
 
 </style>
@@ -391,9 +419,9 @@ body {
 <body>
 
 
-<!-- =================================
+<!-- ==========================================
      MUSIC
-================================= -->
+========================================== -->
 
 <audio
     id="music"
@@ -402,256 +430,280 @@ body {
 </audio>
 
 
-<!-- =================================
-     MUSIC CONTROL
-================================= -->
 
-<button
-    id="musicButton"
-    class="music-button"
-    type="button"
-    onclick="toggleMusic()">
-
-    ♫
-
-</button>
-
-
-
-<!-- =================================
+<!-- ==========================================
      PAGE 1
-================================= -->
+========================================== -->
 
 <section
     class="page active"
     id="page1">
 
-    <img
-        src="page1.jpg"
-        class="page-image"
-        alt="Page 1">
+    <div class="canvas">
 
-    <!-- START HERE -->
+        <img
+            src="page1.jpg"
+            class="page-image"
+            alt="Page 1">
 
-    <a
-        href="#page2"
-        class="click page1-button"
-        onclick="startSurprise(); return false;"
-        aria-label="Start Here">
-    </a>
+
+        <!-- START HERE -->
+
+        <a
+            href="#page2"
+            class="click page1-button"
+            onclick="startSurprise(); return false;"
+            aria-label="START HERE">
+        </a>
+
+    </div>
 
 </section>
 
 
 
-<!-- =================================
+<!-- ==========================================
      PAGE 2
-================================= -->
+========================================== -->
 
 <section
     class="page"
     id="page2">
 
-    <img
-        src="page2.jpg"
-        class="page-image"
-        alt="Page 2">
+    <div class="canvas">
 
-    <!-- NEXT -->
+        <img
+            src="page2.jpg"
+            class="page-image"
+            alt="Page 2">
 
-    <a
-        href="#page3"
-        class="click page2-button"
-        onclick="goToPage(3); return false;"
-        aria-label="Next">
-    </a>
+
+        <!-- OPEN -->
+
+        <a
+            href="#page3"
+            class="click page2-button"
+            onclick="goToPage(3); return false;"
+            aria-label="OPEN">
+        </a>
+
+    </div>
 
 </section>
 
 
 
-<!-- =================================
+<!-- ==========================================
      PAGE 3
-================================= -->
+========================================== -->
 
 <section
     class="page"
     id="page3">
 
-    <img
-        src="page3.jpg"
-        class="page-image"
-        alt="Choose an emotion">
+    <div class="canvas">
+
+        <img
+            src="page3.jpg"
+            class="page-image"
+            alt="Choose an emotion">
 
 
-    <!-- YOU'RE SAD -->
+        <!-- YOU'RE SAD -->
 
-    <a
-        href="#page4"
-        class="click page3-sad"
-        onclick="goToPage(4); return false;"
-        aria-label="You're Sad">
-    </a>
-
-
-    <!-- YOU'RE MAD -->
-
-    <a
-        href="#page5"
-        class="click page3-mad"
-        onclick="goToPage(5); return false;"
-        aria-label="You're Mad">
-    </a>
+        <a
+            href="#page4"
+            class="click page3-sad"
+            onclick="goToPage(4); return false;"
+            aria-label="You're Sad">
+        </a>
 
 
-    <!-- YOU MISS ME -->
+        <!-- YOU'RE MAD -->
 
-    <a
-        href="#page6"
-        class="click page3-miss"
-        onclick="goToPage(6); return false;"
-        aria-label="You Miss Me">
-    </a>
+        <a
+            href="#page5"
+            class="click page3-mad"
+            onclick="goToPage(5); return false;"
+            aria-label="You're Mad">
+        </a>
 
 
-    <!-- YOU'RE JEALOUS -->
+        <!-- YOU MISS ME -->
 
-    <a
-        href="#page7"
-        class="click page3-jealous"
-        onclick="goToPage(7); return false;"
-        aria-label="You're Jealous">
-    </a>
+        <a
+            href="#page6"
+            class="click page3-miss"
+            onclick="goToPage(6); return false;"
+            aria-label="You Miss Me">
+        </a>
+
+
+        <!-- YOU'RE JEALOUS -->
+
+        <a
+            href="#page7"
+            class="click page3-jealous"
+            onclick="goToPage(7); return false;"
+            aria-label="You're Jealous">
+        </a>
+
+    </div>
 
 </section>
 
 
 
-<!-- =================================
+<!-- ==========================================
      PAGE 4
-================================= -->
+========================================== -->
 
 <section
     class="page"
     id="page4">
 
-    <img
-        src="page4.jpg"
-        class="page-image"
-        alt="You're Sad">
+    <div class="canvas">
 
-    <!-- GO BACK -->
+        <img
+            src="page4.jpg"
+            class="page-image"
+            alt="You're Sad">
 
-    <a
-        href="#page3"
-        class="click page4-button"
-        onclick="goToPage(3); return false;"
-        aria-label="Go Back">
-    </a>
+
+        <!-- GO BACK -->
+
+        <a
+            href="#page3"
+            class="click page4-button"
+            onclick="goToPage(3); return false;"
+            aria-label="Go Back">
+        </a>
+
+    </div>
 
 </section>
 
 
 
-<!-- =================================
+<!-- ==========================================
      PAGE 5
-================================= -->
+========================================== -->
 
 <section
     class="page"
     id="page5">
 
-    <img
-        src="page5.jpg"
-        class="page-image"
-        alt="You're Mad">
+    <div class="canvas">
 
-    <!-- GO BACK -->
+        <img
+            src="page5.jpg"
+            class="page-image"
+            alt="You're Mad">
 
-    <a
-        href="#page3"
-        class="click page5-button"
-        onclick="goToPage(3); return false;"
-        aria-label="Go Back">
-    </a>
+
+        <!-- GO BACK -->
+
+        <a
+            href="#page3"
+            class="click page5-button"
+            onclick="goToPage(3); return false;"
+            aria-label="Go Back">
+        </a>
+
+    </div>
 
 </section>
 
 
 
-<!-- =================================
+<!-- ==========================================
      PAGE 6
-================================= -->
+========================================== -->
 
 <section
     class="page"
     id="page6">
 
-    <img
-        src="page6.jpg"
-        class="page-image"
-        alt="You Miss Me">
+    <div class="canvas">
 
-    <!-- GO BACK -->
+        <img
+            src="page6.jpg"
+            class="page-image"
+            alt="You Miss Me">
 
-    <a
-        href="#page3"
-        class="click page6-button"
-        onclick="goToPage(3); return false;"
-        aria-label="Go Back">
-    </a>
+
+        <!-- GO BACK -->
+
+        <a
+            href="#page3"
+            class="click page6-button"
+            onclick="goToPage(3); return false;"
+            aria-label="Go Back">
+        </a>
+
+    </div>
 
 </section>
 
 
 
-<!-- =================================
+<!-- ==========================================
      PAGE 7
-================================= -->
+========================================== -->
 
 <section
     class="page"
     id="page7">
 
-    <img
-        src="page7.jpg"
-        class="page-image"
-        alt="You're Jealous">
+    <div class="canvas">
 
-    <!-- AND THE LAST ONE -->
+        <img
+            src="page7.jpg"
+            class="page-image"
+            alt="Special Page">
 
-    <a
-        href="#page8"
-        class="click page7-button"
-        onclick="goToPage(8); return false;"
-        aria-label="And the Last One">
-    </a>
+
+        <!-- AND THE LAST ONE -->
+
+        <a
+            href="#page8"
+            class="click page7-button"
+            onclick="goToPage(8); return false;"
+            aria-label="And the Last One">
+        </a>
+
+    </div>
 
 </section>
 
 
 
-<!-- =================================
+<!-- ==========================================
      PAGE 8
-================================= -->
+========================================== -->
 
 <section
     class="page"
     id="page8">
 
-    <img
-        src="page8.jpg"
-        class="page-image"
-        alt="Before You Leave">
+    <div class="canvas">
 
-    <!-- BACK TO START -->
+        <img
+            src="page8.jpg"
+            class="page-image"
+            alt="Before You Leave">
 
-    <a
-        href="#page1"
-        class="click page8-button"
-        onclick="backToStart(); return false;"
-        aria-label="Back to Start">
-    </a>
+
+        <!-- BACK TO START -->
+
+        <a
+            href="#page1"
+            class="click page8-button"
+            onclick="backToStart(); return false;"
+            aria-label="Back to Start">
+        </a>
+
+    </div>
 
 </section>
 
@@ -659,40 +711,107 @@ body {
 
 <script>
 
-/* =====================================
+/* =================================================
+   400 × 800 RESPONSIVE SCALING
+================================================= */
+
+function resizeCanvas() {
+
+    const screenWidth =
+        window.innerWidth;
+
+    const screenHeight =
+        window.innerHeight;
+
+
+    const scaleX =
+        screenWidth / 400;
+
+    const scaleY =
+        screenHeight / 800;
+
+
+    /*
+       MAX fills the whole phone.
+
+       This avoids visible side gaps.
+    */
+
+    const scale =
+        Math.max(
+            scaleX,
+            scaleY
+        );
+
+
+    document.documentElement
+        .style
+        .setProperty(
+            "--scale",
+            scale
+        );
+}
+
+
+/* Initial scale */
+
+resizeCanvas();
+
+
+/* Recalculate when screen changes */
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+window.addEventListener(
+    "orientationchange",
+    resizeCanvas
+);
+
+
+
+/* =================================================
    MUSIC
-===================================== */
+================================================= */
 
 const music =
-    document.getElementById("music");
-
-const musicButton =
-    document.getElementById("musicButton");
+    document.getElementById(
+        "music"
+    );
 
 
 /*
-   MUSIC VOLUME = 20%
+   Volume = 20%
 */
 
 music.volume = 0.20;
 
 
 
-/* =====================================
+/* =================================================
    GO TO PAGE
-===================================== */
+================================================= */
 
 function goToPage(number) {
 
     const pages =
-        document.querySelectorAll(".page");
+        document.querySelectorAll(
+            ".page"
+        );
 
 
-    pages.forEach(function(page) {
+    pages.forEach(
+        function(page) {
 
-        page.classList.remove("active");
+            page.classList.remove(
+                "active"
+            );
 
-    });
+        }
+    );
 
 
     const target =
@@ -703,12 +822,17 @@ function goToPage(number) {
 
     if (target) {
 
-        target.classList.add("active");
+        target.classList.add(
+            "active"
+        );
 
     }
 
 
-    window.scrollTo(0, 0);
+    window.scrollTo(
+        0,
+        0
+    );
 
 
     history.replaceState(
@@ -721,16 +845,18 @@ function goToPage(number) {
 
 
 
-/* =====================================
+/* =================================================
    START HERE
-===================================== */
+================================================= */
 
 function startSurprise() {
 
     /*
-       Always start the song
+       Always start music
        from the beginning.
     */
+
+    music.pause();
 
     music.currentTime = 0;
 
@@ -738,22 +864,29 @@ function startSurprise() {
 
 
     /*
-       Start music because
-       this function is triggered
-       by the user's tap.
+       START HERE is a user tap,
+       so mobile browsers allow
+       the music to start here.
     */
 
-    music.play()
-        .then(function() {
+    const playPromise =
+        music.play();
 
-            musicButton.textContent = "♫";
 
-        })
-        .catch(function() {
+    if (playPromise !== undefined) {
 
-            musicButton.textContent = "♫";
+        playPromise.catch(
+            function(error) {
 
-        });
+                console.log(
+                    "Music error:",
+                    error
+                );
+
+            }
+        );
+
+    }
 
 
     /*
@@ -766,86 +899,102 @@ function startSurprise() {
 
 
 
-/* =====================================
+/* =================================================
    BACK TO START
-===================================== */
+================================================= */
 
 function backToStart() {
 
     /*
-       Stop the current playback
+       Stop music
     */
 
     music.pause();
 
 
     /*
-       Return music to intro
+       Reset music to intro
     */
 
     music.currentTime = 0;
 
 
     /*
-       Keep volume at 20%
+       Volume remains 20%
     */
 
     music.volume = 0.20;
 
 
     /*
-       Go back to Page 1
+       Return to Page 1
     */
 
     goToPage(1);
 
-
-    /*
-       Do NOT automatically play here.
-
-       Music will start again when
-       "START HERE" is pressed.
-    */
-
-    musicButton.textContent = "♫";
-
 }
 
 
 
-/* =====================================
-   MUSIC ON / OFF
-===================================== */
+/* =================================================
+   PREVENT IMAGE DRAG
+================================================= */
 
-function toggleMusic() {
+document.addEventListener(
+    "dragstart",
+    function(event) {
 
-    if (music.paused) {
+        if (
+            event.target.tagName === "IMG"
+        ) {
 
-        music.volume = 0.20;
+            event.preventDefault();
 
-        music.play()
-            .then(function() {
-
-                musicButton.textContent = "♫";
-
-            })
-            .catch(function() {});
+        }
 
     }
+);
 
-    else {
 
-        music.pause();
+/* =================================================
+   LOAD HASH
+================================================= */
 
-        musicButton.textContent = "♪";
+window.addEventListener(
+    "load",
+    function() {
+
+        const hash =
+            window.location.hash;
+
+
+        if (hash) {
+
+            const number =
+                parseInt(
+                    hash.replace(
+                        "#page",
+                        ""
+                    )
+                );
+
+
+            if (
+                number >= 1 &&
+                number <= 8
+            ) {
+
+                goToPage(number);
+
+            }
+
+        }
 
     }
-
-}
+);
 
 </script>
 
-
 </body>
 
-       </html>
+   </html>
