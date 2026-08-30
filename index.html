@@ -1,311 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width,
-      initial-scale=1.0,
-      maximum-scale=1.0,
-      user-scalable=no">
+    <title>A Little Reminder</title>
 
-<title>A Little Reminder ♡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: #07073e;
-    overflow: hidden;
-}
+        body {
+            background: #000;
+            overflow-x: hidden;
+        }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .page {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-#app {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    max-width: 800px;
-    overflow: hidden;
-    background: #07073e;
-}
+        .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-/* =========================
-   PAGES
-========================= */
+        /* Music is hidden */
+        audio {
+            display: none;
+        }
 
-.page {
-    position: absolute;
-    inset: 0;
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
-.page img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* =========================
-   INVISIBLE CLICKABLE BUTTONS
-========================= */
-
-.hotspot {
-    position: absolute;
-    display: block;
-    z-index: 10;
-
-    background: transparent;
-    border: none;
-    outline: none;
-
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-}
-
-/* =========================
-   MUSIC BUTTON
-========================= */
-
-#musicBtn {
-    position: fixed;
-
-    right: 16px;
-    bottom: 18px;
-
-    z-index: 9999;
-
-    width: 52px;
-    height: 52px;
-
-    border: 2px solid rgba(255,255,255,0.8);
-    border-radius: 50%;
-
-    background: rgba(20,10,70,0.75);
-
-    color: white;
-
-    font-size: 24px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow:
-        0 3px 14px rgba(0,0,0,0.45);
-
-    cursor: pointer;
-
-    -webkit-tap-highlight-color: transparent;
-}
-
-#musicBtn:active {
-    transform: scale(0.94);
-}
-</style>
+        /* Small invisible start area */
+        #startMessage {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+    </style>
 </head>
 
 <body>
 
-<div id="app">
+    <!-- MUSIC -->
+    <audio id="music" autoplay loop playsinline>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
 
-    <!-- ==================================================
-         PAGE 1
-    =================================================== -->
 
-    <section class="page active" id="p1">
+    <!-- PAGE 1 -->
+    <section class="page">
+        <img src="page1.png" alt="Page 1">
+    </section>
 
-        <img
-            src="1000023352.png"
-            alt="A Little Reminder"
-        >
+    <!-- PAGE 2 -->
+    <section class="page">
+        <img src="page2.png" alt="Page 2">
+    </section>
 
-        <!-- START HERE -->
+    <!-- PAGE 3 -->
+    <section class="page">
+        <img src="page3.png" alt="Page 3">
+    </section>
 
-        <button
-            class="hotspot"
-            style="
-                left:15%;
-                top:73%;
-                width:70%;
-                height:8%;
-            "
-            aria-label="Start here"
-            onclick="go(2)"
-        ></button>
+    <!-- PAGE 4 -->
+    <section class="page">
+        <img src="page4.png" alt="Page 4">
+    </section>
 
+    <!-- PAGE 5 -->
+    <section class="page">
+        <img src="page5.png" alt="Page 5">
+    </section>
+
+    <!-- PAGE 6 -->
+    <section class="page">
+        <img src="page6.png" alt="Page 6">
+    </section>
+
+    <!-- PAGE 7 -->
+    <section class="page">
+        <img src="page7.png" alt="Page 7">
+    </section>
+
+    <!-- PAGE 8 -->
+    <section class="page">
+        <img src="page8.png" alt="Page 8">
     </section>
 
 
-    <!-- ==================================================
-         PAGE 2
-    =================================================== -->
+    <script>
 
-    <section class="page" id="p2">
+        const music = document.getElementById("music");
 
-        <img
-            src="1000023353.png"
-            alt="Open"
-        >
+        // Try to start music automatically
+        window.addEventListener("load", function () {
+            music.volume = 1.0;
 
-        <!-- OPEN -->
+            const playPromise = music.play();
 
-        <button
-            class="hotspot"
-            style="
-                left:22%;
-                top:72%;
-                width:58%;
-                height:9%;
-            "
-            aria-label="Open"
-            onclick="go(3)"
-        ></button>
-
-    </section>
+            if (playPromise !== undefined) {
+                playPromise.catch(function () {
+                    // Browser blocked autoplay.
+                    // Music will start on the first touch/click.
+                });
+            }
+        });
 
 
-    <!-- ==================================================
-         PAGE 3 - CHOICES
-    =================================================== -->
+        // Start music when the visitor touches the screen
+        function startMusic() {
+            music.volume = 1.0;
+            music.play().catch(function () {});
+        }
 
-    <section class="page" id="p3">
+        document.addEventListener("click", startMusic, {
+            once: true
+        });
 
-        <img
-            src="1000023349.png"
-            alt="Open this when"
-        >
+        document.addEventListener("touchstart", startMusic, {
+            once: true
+        });
 
+    </script>
 
-        <!-- YOU'RE SAD -->
-
-        <button
-            class="hotspot"
-            style="
-                left:17%;
-                top:34%;
-                width:67%;
-                height:8%;
-            "
-            aria-label="You're sad"
-            onclick="go(4)"
-        ></button>
-
-
-        <!-- YOU'RE MAD -->
-
-        <button
-            class="hotspot"
-            style="
-                left:17%;
-                top:42%;
-                width:67%;
-                height:8%;
-            "
-            aria-label="You're mad"
-            onclick="go(5)"
-        ></button>
-
-
-        <!-- YOU MISS ME -->
-
-        <button
-            class="hotspot"
-            style="
-                left:17%;
-                top:50%;
-                width:67%;
-                height:8%;
-            "
-            aria-label="You miss me"
-            onclick="go(6)"
-        ></button>
-
-
-        <!-- YOU'RE JEALOUS -->
-
-        <button
-            class="hotspot"
-            style="
-                left:17%;
-                top:58%;
-                width:67%;
-                height:8%;
-            "
-            aria-label="You're jealous"
-            onclick="go(7)"
-        ></button>
-
-    </section>
-
-
-    <!-- ==================================================
-         PAGE 4 - SAD
-    =================================================== -->
-
-    <section class="page" id="p4">
-
-        <img
-            src="1000023348.png"
-            alt="When you're sad"
-        >
-
-        <!-- GO BACK -->
-
-        <button
-            class="hotspot"
-            style="
-                left:8%;
-                top:78%;
-                width:55%;
-                height:9%;
-            "
-            aria-label="Go back"
-            onclick="go(3)"
-        ></button>
-
-    </section>
-
-
-    <!-- ==================================================
-         PAGE 5 - MAD
-    =================================================== -->
-
-    <section class="page" id="p5">
-
-        <img
-            src="1000023355.png"
-            alt="When you're mad"
-        >
-
-        <!-- GO BACK -->
-
-        <button
-            class="hotspot"
-            style="
-                left:7%;
-                top:78%;
-                width:55%;
-                height:9%;
-            "
-            aria
+</body>
+          </html>
