@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -13,6 +15,10 @@
 
 <style>
 
+/* =========================
+   BASIC
+   ========================= */
+
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
@@ -22,9 +28,12 @@ html,
 body {
     margin: 0;
     padding: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
+
     background: #080b48;
 }
 
@@ -32,10 +41,17 @@ body {
     touch-action: manipulation;
 }
 
+
+/* =========================
+   APP
+   ========================= */
+
 #app {
     position: relative;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
 }
 
@@ -46,12 +62,14 @@ body {
 
 .page {
     position: absolute;
+
     inset: 0;
 
     width: 100%;
     height: 100%;
 
     display: none;
+
     overflow: hidden;
 }
 
@@ -61,11 +79,12 @@ body {
 
 
 /* =========================
-   IMAGES
+   PAGE IMAGES
    ========================= */
 
 .page img {
     position: absolute;
+
     inset: 0;
 
     width: 100%;
@@ -79,10 +98,11 @@ body {
 
 
 /* =========================
-   INVISIBLE CLICKABLE AREAS
+   INVISIBLE BUTTONS
    ========================= */
 
 .button {
+
     position: absolute;
 
     z-index: 100;
@@ -112,6 +132,7 @@ body {
    ========================= */
 
 .start-button {
+
     left: 10%;
     top: 72%;
 
@@ -126,6 +147,7 @@ body {
    ========================= */
 
 .open-button {
+
     left: 10%;
     top: 70%;
 
@@ -143,6 +165,7 @@ body {
 /* SAD */
 
 .sad-button {
+
     left: 10%;
     top: 31%;
 
@@ -154,6 +177,7 @@ body {
 /* YOU'RE MAD */
 
 .mad-button {
+
     left: 10%;
     top: 40%;
 
@@ -165,6 +189,7 @@ body {
 /* YOU MISS ME */
 
 .miss-button {
+
     left: 10%;
     top: 49%;
 
@@ -176,6 +201,7 @@ body {
 /* YOU'RE JEALOUS */
 
 .jealous-button {
+
     left: 10%;
     top: 58%;
 
@@ -185,13 +211,46 @@ body {
 
 
 /* =========================
-   PAGE 4, 5, 6
+   PAGE 4
    GO BACK
    ========================= */
 
-.back-button {
+.page4 .back-button {
+
     left: 5%;
     bottom: 6%;
+
+    width: 65%;
+    height: 12%;
+}
+
+
+/* =========================
+   PAGE 5
+   GO BACK
+   SLIGHTLY HIGHER
+   ========================= */
+
+.page5 .back-button {
+
+    left: 5%;
+    bottom: 9%;
+
+    width: 65%;
+    height: 12%;
+}
+
+
+/* =========================
+   PAGE 6
+   GO BACK
+   SLIGHTLY HIGHER
+   ========================= */
+
+.page6 .back-button {
+
+    left: 5%;
+    bottom: 9%;
 
     width: 65%;
     height: 12%;
@@ -204,6 +263,7 @@ body {
    ========================= */
 
 .last-button {
+
     left: 5%;
     bottom: 6%;
 
@@ -218,6 +278,7 @@ body {
    ========================= */
 
 .home-button {
+
     left: 20%;
     bottom: 4%;
 
@@ -239,6 +300,7 @@ body {
 }
 
 </style>
+
 </head>
 
 
@@ -252,8 +314,8 @@ body {
 <audio
     id="music"
     src="./music.mp3"
-    loop
-    preload="auto">
+    preload="auto"
+    loop>
 </audio>
 
 
@@ -372,6 +434,7 @@ body {
         src="./sad.jpg"
         alt="Page 4">
 
+
     <!-- GO BACK -->
 
     <button
@@ -395,6 +458,7 @@ body {
     <img
         src="./mad.jpg"
         alt="Page 5">
+
 
     <!-- GO BACK -->
 
@@ -420,6 +484,7 @@ body {
         src="./miss-you.jpg"
         alt="Page 6">
 
+
     <!-- GO BACK -->
 
     <button
@@ -443,6 +508,7 @@ body {
     <img
         src="./jealous.jpg"
         alt="Page 7">
+
 
     <!-- AND THE LAST ONE -->
 
@@ -468,6 +534,7 @@ body {
         src="./final.jpg"
         alt="Page 8">
 
+
     <!-- GO BACK TO START -->
 
     <button
@@ -483,25 +550,32 @@ body {
 </div>
 
 
-
 <script>
 
 /* =========================
-   PAGES
+   GET ALL PAGES
    ========================= */
 
-const pages = document.querySelectorAll(".page");
+const pages =
+    document.querySelectorAll(".page");
 
 
 /* =========================
    MUSIC
+   25% VOLUME
    ========================= */
 
-const music = document.getElementById("music");
-
-/* MUSIC = 25% */
+const music =
+    document.getElementById("music");
 
 music.volume = 0.25;
+
+
+/* =========================
+   PRELOAD MUSIC
+   ========================= */
+
+music.load();
 
 
 /* =========================
@@ -512,9 +586,18 @@ function startMusic() {
 
     music.volume = 0.25;
 
-    music.play().catch(function() {
-        // Mobile browser autoplay protection
-    });
+    const playPromise =
+        music.play();
+
+    if (playPromise !== undefined) {
+
+        playPromise.catch(function() {
+
+            /* Browser autoplay protection */
+
+        });
+
+    }
 
 }
 
@@ -525,11 +608,13 @@ function startMusic() {
 
 function showPage(pageName) {
 
-    /* Start music after user's tap */
+    /* Start music immediately
+       after the user's tap */
+
     startMusic();
 
 
-    /* Hide every page */
+    /* Hide all pages */
 
     pages.forEach(function(page) {
 
@@ -538,11 +623,13 @@ function showPage(pageName) {
     });
 
 
-    /* Show selected page */
+    /* Find requested page */
 
     const target =
         document.querySelector("." + pageName);
 
+
+    /* Show requested page */
 
     if (target) {
 
@@ -552,23 +639,8 @@ function showPage(pageName) {
 
 }
 
-
-/* =========================
-   FIRST TOUCH
-   ========================= */
-
-document.addEventListener(
-    "pointerdown",
-    function() {
-
-        startMusic();
-
-    },
-    { once: true }
-);
-
 </script>
 
 
 </body>
-    </html>
+          </html>
