@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Hi Baby 💗</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#070a46}
+#app,.page{position:absolute;inset:0;width:100%;height:100%}
+.page{display:none}.page.active{display:block}
+.page img{width:100%;height:100%;object-fit:cover;display:block}
+.hit{position:absolute;border:0;background:transparent;padding:0;margin:0;z-index:10;cursor:pointer}
+.page1 .start{left:15.5%;top:74.8%;width:69%;height:7.2%}
+.page2 .open{left:21%;top:73.5%;width:57%;height:7%}
+.menu .sad{left:17%;top:33.5%;width:66%;height:7%}
+.menu .mad{left:17%;top:41.2%;width:66%;height:7%}
+.menu .miss{left:17%;top:49%;width:66%;height:7%}
+.menu .jealous{left:17%;top:56.8%;width:66%;height:7%}
+.content .back{left:7%;top:79%;width:55%;height:6.5%}
+.final .home{left:27%;top:91%;width:48%;height:6%}
+@media (min-aspect-ratio:1/1){.page img{object-fit:contain}}
+</style>
+</head>
+<body>
+<audio id="music" src="music.mp3" loop preload="auto"></audio>
+<div id="app">
+<section class="page page1 active"><img src="images/page1.jpg" alt="Hi Baby"><button class="hit start" onclick="showPage('page2')"></button></section>
+<section class="page page2"><img src="images/page2.jpg" alt="A little message"><button class="hit open" onclick="showPage('menu')"></button></section>
+<section class="page menu"><img src="images/menu.jpg" alt="Open this when"><button class="hit sad" onclick="showPage('sad')"></button><button class="hit mad" onclick="showPage('mad')"></button><button class="hit miss" onclick="showPage('miss')"></button><button class="hit jealous" onclick="showPage('jealous')"></button></section>
+<section class="page content sad"><img src="images/sad.jpg" alt="When you're sad"><button class="hit back" onclick="showPage('menu')"></button></section>
+<section class="page content mad"><img src="images/mad.jpg" alt="When you're mad"><button class="hit back" onclick="showPage('menu')"></button></section>
+<section class="page content miss"><img src="images/miss-you.jpg" alt="When you miss me"><button class="hit back" onclick="showPage('menu')"></button></section>
+<section class="page content jealous"><img src="images/jealous.jpg" alt="When you're jealous"><button class="hit back" onclick="showPage('menu')"></button></section>
+<section class="page final"><img src="images/final.jpg" alt="Before you go"><button class="hit home" onclick="showPage('page1')"></button></section>
+</div>
+<script>
+const pages=document.querySelectorAll('.page');
+const music=document.getElementById('music');
+function startMusic(){music.play().catch(()=>{});}
+function showPage(name){startMusic();pages.forEach(p=>p.classList.remove('active'));const target=document.querySelector('.'+name);if(target)target.classList.add('active');}
+document.addEventListener('pointerdown',startMusic,{once:true});
+</script>
+</body>
+</html>
