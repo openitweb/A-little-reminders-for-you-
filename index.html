@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no,
+               viewport-fit=cover">
+
+<title>A Little Reminder</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #08052f;
+}
+
+body {
+    position: fixed;
+    inset: 0;
+    touch-action: none;
+    overscroll-behavior: none;
+}
+
+#app {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.page {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    overflow: hidden;
+}
+
+.page.active {
+    display: block;
+}
+
+.page img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+/*
+   Invisible clickable buttons.
+   They sit exactly over the buttons drawn in your pictures.
+*/
+.hotspot {
+    position: absolute;
+    display: block;
+    z-index: 10;
+    background: transparent;
+    border: 0;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* PAGE 1 - START HERE */
+#page1 .start {
+    left: 15%;
+    top: 72%;
+    width: 70%;
+    height: 8%;
+}
+
+/* PAGE 2 - OPEN */
+#page2 .open {
+    left: 20%;
+    top: 71%;
+    width: 60%;
+    height: 8%;
+}
+
+/* PAGE 3 - MENU BUTTONS */
+#page3 .sad {
+    left: 17%;
+    top: 39%;
+    width: 66%;
+    height: 8%;
+}
+
+#page3 .mad {
+    left: 17%;
+    top: 47%;
+    width: 66%;
+    height: 8%;
+}
+
+#page3 .miss {
+    left: 17%;
+    top: 55%;
+    width: 66%;
+    height: 8%;
+}
+
+#page3 .jealous {
+    left: 17%;
+    top: 63%;
+    width: 66%;
+    height: 8%;
+}
+
+/* PAGE 4 - GO BACK */
+#page4 .back {
+    left: 8%;
+    top: 82%;
+    width: 55%;
+    height: 8%;
+}
+
+/* PAGE 5 - GO BACK */
+#page5 .back {
+    left: 5%;
+    top: 80%;
+    width: 55%;
+    height: 8%;
+}
+
+/* PAGE 6 - GO BACK */
+#page6 .back {
+    left: 7%;
+    top: 71%;
+    width: 50%;
+    height: 8%;
+}
+
+/* PAGE 7 - AND THE LAST ONE */
+#page7 .last {
+    left: 7%;
+    top: 80%;
+    width: 60%;
+    height: 9%;
+}
+
+/* PAGE 8 - BACK TO START */
+#page8 .restart {
+    left: 27%;
+    top: 88%;
+    width: 50%;
+    height: 7%;
+}
+
+/* Small music indicator */
+#musicButton {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 100;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.25);
+    color: white;
+    font-size: 20px;
+    display: none;
+}
+
+@media (orientation: landscape) {
+    /*
+       Keeps the page centered if the phone is rotated.
+    */
+    .page img {
+        object-fit: contain;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- PAGE 1 -->
+    <section class="page active" id="page1">
+        <img src="page1.jpg" alt="Page 1">
+
+        <button
+            class="hotspot start"
+            aria-label="Start Here"
+            onclick="goToPage(2); startMusic();">
+        </button>
+    </section>
+
+
+    <!-- PAGE 2 -->
+    <section class="page" id="page2">
+        <img src="page2.jpg" alt="Page 2">
+
+        <button
+            class="hotspot open"
+            aria-label="Open"
+            onclick="goToPage(3); startMusic();">
+        </button>
+    </section>
+
+
+    <!-- PAGE 3 -->
+    <section class="page" id="page3">
+        <img src="page3.jpg" alt="Choose a reminder">
+
+        <button
+            class="hotspot sad"
+            aria-label="You're Sad"
+            onclick="goToPage(4); startMusic();">
+        </button>
+
+        <button
+            class="hotspot mad"
+            aria-label="You're Mad"
+            onclick="goToPage(5); startMusic();">
+        </button>
+
+        <button
+            class="hotspot miss"
+            aria-label="You Miss Me"
+            onclick="goToPage(6); startMusic();">
+        </button>
+
+        <button
+            class="hotspot jealous"
+            aria-label="You're Jealous"
+            onclick="goToPage(7); startMusic();">
+        </button>
+    </section>
+
+
+    <!-- PAGE 4 - SAD -->
+    <section class="page" id="page4">
+        <img src="page4.jpg" alt="You're Sad">
+
+        <button
+            class="hotspot back"
+            aria-label="Go Back"
+            onclick="goToPage(3);">
+        </button>
+    </section>
+
+
+    <!-- PAGE 5 - MAD -->
+    <section class="page" id="page5">
+        <img src="page5.jpg" alt="You're Mad">
+
+        <button
+            class="hotspot back"
+            aria-label="Go Back"
+            onclick="goToPage(3);">
+        </button>
+    </section>
+
+
+    <!-- PAGE 6 - MISS ME -->
+    <section class="page" id="page6">
+        <img src="page6.jpg" alt="You Miss Me">
+
+        <button
+            class="hotspot back"
+            aria-label="Go Back"
+            onclick="goToPage(3);">
+        </button>
+    </section>
+
+
+    <!-- PAGE 7 - JEALOUS -->
+    <section class="page" id="page7">
+        <img src="page7.jpg" alt="You're Jealous">
+
+        <button
+            class="hotspot last"
+            aria-label="And The Last One"
+            onclick="goToPage(8);">
+        </button>
+    </section>
+
+
+    <!-- PAGE 8 -->
+    <section class="page" id="page8">
+        <img src="page8.jpg" alt="Before You Go">
+
+        <button
+            class="hotspot restart"
+            aria-label="Back to Start"
+            onclick="goToPage(1);">
+        </button>
+    </section>
+
+</div>
+
+
+<!-- MUSIC -->
+<audio id="music" preload="auto" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+const music = document.getElementById("music");
+
+/* 50% VOLUME */
+music.volume = 0.5;
+
+
+/* CURRENT PAGE */
+let currentPage = 1;
+
+
+/* GO TO PAGE */
+function goToPage(number) {
+
+    const oldPage = document.getElementById(
+        "page" + currentPage
+    );
+
+    const newPage = document.getElementById(
+        "page" + number
+    );
+
+    if (!newPage) return;
+
+    oldPage.classList.remove("active");
+    newPage.classList.add("active");
+
+    currentPage = number;
+
+    /*
+       Always return the page to its original position.
+       This prevents scrolling.
+    */
+    window.scrollTo(0, 0);
+}
+
+
+/* START MUSIC */
+function startMusic() {
+
+    music.volume = 0.5;
+
+    const promise = music.play();
+
+    if (promise !== undefined) {
+        promise.catch(function() {
+            /*
+              Some browsers block autoplay.
+              The next button tap will try again.
+            */
+        });
+    }
+}
+
+
+/*
+   If the user taps anywhere after music was blocked,
+   try playing again.
+*/
+document.addEventListener("touchstart", function() {
+
+    if (music.paused) {
+        music.volume = 0.5;
+
+        music.play().catch(function() {});
+    }
+
+}, { passive: true });
+
+
+/*
+   Prevent accidental browser scrolling/swiping.
+*/
+document.addEventListener("touchmove", function(event) {
+    event.preventDefault();
+}, { passive: false });
+
+
+/*
+   Prevent normal page scrolling with mouse wheel.
+*/
+document.addEventListener("wheel", function(event) {
+    event.preventDefault();
+}, { passive: false });
+
+
+/*
+   Prevent keyboard scrolling.
+*/
+document.addEventListener("keydown", function(event) {
+
+    const keys = [
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        " ",
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End"
+    ];
+
+    if (keys.includes(event.key)) {
+        event.preventDefault();
+    }
+
+});
+
+</script>
+
+</body>
+  </html>
