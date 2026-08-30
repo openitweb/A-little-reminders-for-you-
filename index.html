@@ -1,311 +1,805 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 
 <meta name="viewport"
       content="width=device-width,
-      initial-scale=1.0,
-      maximum-scale=1.0,
-      user-scalable=no">
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
 
-<title>A Little Reminder ♡</title>
+<title>A Little Reminder</title>
 
 <style>
+
+/* =========================
+   RESET
+   ========================= */
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
-    background: #07073e;
     overflow: hidden;
+    background: #08052b;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* =========================
+   MAIN APP
+   ========================= */
 
 #app {
     position: relative;
+
     width: 100vw;
     height: 100vh;
-    max-width: 800px;
+
     overflow: hidden;
-    background: #07073e;
 }
 
 /* =========================
    PAGES
-========================= */
+   ========================= */
 
 .page {
     position: absolute;
-    inset: 0;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
     display: none;
+
+    overflow: hidden;
 }
 
 .page.active {
     display: block;
 }
 
+/* =========================
+   IMAGES
+   ========================= */
+
 .page img {
     position: absolute;
-    inset: 0;
+
+    top: 0;
+    left: 0;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
     object-position: center;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    pointer-events: none;
 }
 
 /* =========================
    INVISIBLE CLICKABLE BUTTONS
-========================= */
+   ========================= */
 
 .hotspot {
     position: absolute;
+
     display: block;
-    z-index: 10;
 
     background: transparent;
-    border: none;
-    outline: none;
 
-    cursor: pointer;
+    border: none;
+
     padding: 0;
     margin: 0;
-}
-
-/* =========================
-   MUSIC BUTTON
-========================= */
-
-#musicBtn {
-    position: fixed;
-
-    right: 16px;
-    bottom: 18px;
-
-    z-index: 9999;
-
-    width: 52px;
-    height: 52px;
-
-    border: 2px solid rgba(255,255,255,0.8);
-    border-radius: 50%;
-
-    background: rgba(20,10,70,0.75);
-
-    color: white;
-
-    font-size: 24px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow:
-        0 3px 14px rgba(0,0,0,0.45);
 
     cursor: pointer;
 
-    -webkit-tap-highlight-color: transparent;
+    z-index: 20;
+
+    outline: none;
 }
 
-#musicBtn:active {
-    transform: scale(0.94);
+/* ==================================================
+   PAGE 1
+   START HERE
+   ================================================== */
+
+#startHere {
+
+    left: 15%;
+
+    top: 73.5%;
+
+    width: 70%;
+
+    height: 8%;
 }
+
+
+/* ==================================================
+   PAGE 2
+   OPEN
+   ================================================== */
+
+#openButton {
+
+    left: 20%;
+
+    top: 73%;
+
+    width: 60%;
+
+    height: 9%;
+}
+
+
+/* ==================================================
+   PAGE 3
+   CHOICES
+   ================================================== */
+
+/* YOU'RE SAD */
+
+#sadButton {
+
+    left: 16%;
+
+    top: 36.5%;
+
+    width: 68%;
+
+    height: 6%;
+}
+
+
+/* YOU'RE MAD */
+
+#madButton {
+
+    left: 16%;
+
+    top: 44%;
+
+    width: 68%;
+
+    height: 6%;
+}
+
+
+/* YOU MISS ME */
+
+#missButton {
+
+    left: 16%;
+
+    top: 51%;
+
+    width: 68%;
+
+    height: 6%;
+}
+
+
+/* YOU'RE JEALOUS */
+
+#jealousButton {
+
+    left: 16%;
+
+    top: 58%;
+
+    width: 68%;
+
+    height: 6%;
+}
+
+
+/* ==================================================
+   PAGE 4
+   SAD → GO BACK
+   ================================================== */
+
+#backFromSad {
+
+    left: 7%;
+
+    top: 77%;
+
+    width: 54%;
+
+    height: 7%;
+}
+
+
+/* ==================================================
+   PAGE 5
+   MAD → GO BACK
+   ================================================== */
+
+#backFromMad {
+
+    left: 5%;
+
+    top: 76%;
+
+    width: 55%;
+
+    height: 8%;
+}
+
+
+/* ==================================================
+   PAGE 6
+   MISS ME → GO BACK
+   ================================================== */
+
+#backFromMiss {
+
+    left: 6%;
+
+    top: 75%;
+
+    width: 48%;
+
+    height: 8%;
+}
+
+
+/* ==================================================
+   PAGE 7
+   AND THE LAST ONE
+   ================================================== */
+
+#lastOne {
+
+    left: 6%;
+
+    top: 75%;
+
+    width: 60%;
+
+    height: 8%;
+}
+
+
+/* ==================================================
+   PAGE 8
+   BACK TO START
+   ================================================== */
+
+#backToStart {
+
+    left: 26%;
+
+    top: 89%;
+
+    width: 48%;
+
+    height: 7%;
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div id="app">
 
-    <!-- ==================================================
-         PAGE 1
-    =================================================== -->
 
-    <section class="page active" id="p1">
+<!-- ==================================================
+     PAGE 1
+     ================================================== -->
 
-        <img
-            src="1000023352.png"
-            alt="A Little Reminder"
-        >
+<div class="page active" id="page1">
 
-        <!-- START HERE -->
+    <img
+        src="page1.jpg"
+        onerror="this.onerror=null; this.src='page1.png';"
+        alt="Page 1">
 
-        <button
-            class="hotspot"
-            style="
-                left:15%;
-                top:73%;
-                width:70%;
-                height:8%;
-            "
-            aria-label="Start here"
-            onclick="go(2)"
-        ></button>
+    <button
+        class="hotspot"
+        id="startHere"
+        aria-label="START HERE">
+    </button>
 
-    </section>
+</div>
 
 
-    <!-- ==================================================
-         PAGE 2
-    =================================================== -->
 
-    <section class="page" id="p2">
+<!-- ==================================================
+     PAGE 2
+     ================================================== -->
 
-        <img
-            src="1000023353.png"
-            alt="Open"
-        >
+<div class="page" id="page2">
 
-        <!-- OPEN -->
+    <img
+        src="page2.jpg"
+        onerror="this.onerror=null; this.src='page2.png';"
+        alt="Page 2">
 
-        <button
-            class="hotspot"
-            style="
-                left:22%;
-                top:72%;
-                width:58%;
-                height:9%;
-            "
-            aria-label="Open"
-            onclick="go(3)"
-        ></button>
+    <button
+        class="hotspot"
+        id="openButton"
+        aria-label="OPEN">
+    </button>
 
-    </section>
+</div>
 
 
-    <!-- ==================================================
-         PAGE 3 - CHOICES
-    =================================================== -->
 
-    <section class="page" id="p3">
+<!-- ==================================================
+     PAGE 3
+     ================================================== -->
 
-        <img
-            src="1000023349.png"
-            alt="Open this when"
-        >
+<div class="page" id="page3">
 
-
-        <!-- YOU'RE SAD -->
-
-        <button
-            class="hotspot"
-            style="
-                left:17%;
-                top:34%;
-                width:67%;
-                height:8%;
-            "
-            aria-label="You're sad"
-            onclick="go(4)"
-        ></button>
+    <img
+        src="page3.jpg"
+        onerror="this.onerror=null; this.src='page3.png';"
+        alt="Page 3">
 
 
-        <!-- YOU'RE MAD -->
+    <!-- YOU'RE SAD -->
 
-        <button
-            class="hotspot"
-            style="
-                left:17%;
-                top:42%;
-                width:67%;
-                height:8%;
-            "
-            aria-label="You're mad"
-            onclick="go(5)"
-        ></button>
+    <button
+        class="hotspot"
+        id="sadButton"
+        aria-label="YOU'RE SAD">
+    </button>
 
 
-        <!-- YOU MISS ME -->
+    <!-- YOU'RE MAD -->
 
-        <button
-            class="hotspot"
-            style="
-                left:17%;
-                top:50%;
-                width:67%;
-                height:8%;
-            "
-            aria-label="You miss me"
-            onclick="go(6)"
-        ></button>
+    <button
+        class="hotspot"
+        id="madButton"
+        aria-label="YOU'RE MAD">
+    </button>
 
 
-        <!-- YOU'RE JEALOUS -->
+    <!-- YOU MISS ME -->
 
-        <button
-            class="hotspot"
-            style="
-                left:17%;
-                top:58%;
-                width:67%;
-                height:8%;
-            "
-            aria-label="You're jealous"
-            onclick="go(7)"
-        ></button>
-
-    </section>
+    <button
+        class="hotspot"
+        id="missButton"
+        aria-label="YOU MISS ME">
+    </button>
 
 
-    <!-- ==================================================
-         PAGE 4 - SAD
-    =================================================== -->
+    <!-- YOU'RE JEALOUS -->
 
-    <section class="page" id="p4">
+    <button
+        class="hotspot"
+        id="jealousButton"
+        aria-label="YOU'RE JEALOUS">
+    </button>
 
-        <img
-            src="1000023348.png"
-            alt="When you're sad"
-        >
-
-        <!-- GO BACK -->
-
-        <button
-            class="hotspot"
-            style="
-                left:8%;
-                top:78%;
-                width:55%;
-                height:9%;
-            "
-            aria-label="Go back"
-            onclick="go(3)"
-        ></button>
-
-    </section>
+</div>
 
 
-    <!-- ==================================================
-         PAGE 5 - MAD
-    =================================================== -->
 
-    <section class="page" id="p5">
+<!-- ==================================================
+     PAGE 4
+     SAD
+     ================================================== -->
 
-        <img
-            src="1000023355.png"
-            alt="When you're mad"
-        >
+<div class="page" id="page4">
 
-        <!-- GO BACK -->
+    <img
+        src="page4.jpg"
+        onerror="this.onerror=null; this.src='page4.png';"
+        alt="Sad reminder">
 
-        <button
-            class="hotspot"
-            style="
-                left:7%;
-                top:78%;
-                width:55%;
-                height:9%;
-            "
-            aria
+    <button
+        class="hotspot"
+        id="backFromSad"
+        aria-label="GO BACK">
+    </button>
+
+</div>
+
+
+
+<!-- ==================================================
+     PAGE 5
+     MAD
+     ================================================== -->
+
+<div class="page" id="page5">
+
+    <img
+        src="page5.jpg"
+        onerror="this.onerror=null; this.src='page5.png';"
+        alt="Mad reminder">
+
+    <button
+        class="hotspot"
+        id="backFromMad"
+        aria-label="GO BACK">
+    </button>
+
+</div>
+
+
+
+<!-- ==================================================
+     PAGE 6
+     MISS ME
+     ================================================== -->
+
+<div class="page" id="page6">
+
+    <img
+        src="page6.jpg"
+        onerror="this.onerror=null; this.src='page6.png';"
+        alt="Miss you reminder">
+
+    <button
+        class="hotspot"
+        id="backFromMiss"
+        aria-label="GO BACK">
+    </button>
+
+</div>
+
+
+
+<!-- ==================================================
+     PAGE 7
+     JEALOUS
+     ================================================== -->
+
+<div class="page" id="page7">
+
+    <img
+        src="page7.jpg"
+        onerror="this.onerror=null; this.src='page7.png';"
+        alt="Jealous reminder">
+
+    <button
+        class="hotspot"
+        id="lastOne"
+        aria-label="AND THE LAST ONE">
+    </button>
+
+</div>
+
+
+
+<!-- ==================================================
+     PAGE 8
+     FINAL
+     ================================================== -->
+
+<div class="page" id="page8">
+
+    <img
+        src="page8.jpg"
+        onerror="this.onerror=null; this.src='page8.png';"
+        alt="Final reminder">
+
+    <button
+        class="hotspot"
+        id="backToStart"
+        aria-label="BACK TO START">
+    </button>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     MUSIC
+     ================================================== -->
+
+<audio
+    id="music"
+    loop
+    preload="auto">
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+
+<script>
+
+/* ==================================================
+   PAGE FUNCTION
+   ================================================== */
+
+function showPage(number) {
+
+    /*
+       Hide all pages
+    */
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function(page) {
+
+            page.classList.remove("active");
+
+        });
+
+
+    /*
+       Show selected page
+    */
+
+    document
+        .getElementById("page" + number)
+        .classList.add("active");
+
+
+    /*
+       Make sure there is NO scrolling
+    */
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* ==================================================
+   MUSIC
+   ================================================== */
+
+const music = document.getElementById("music");
+
+
+/*
+   MUSIC VOLUME = 50%
+*/
+
+music.volume = 0.50;
+
+
+/*
+   Try to automatically play music
+   when website opens.
+*/
+
+window.addEventListener("load", function() {
+
+    music.play().catch(function() {
+
+        /*
+           Some mobile browsers block
+           autoplay until the user touches
+           the website.
+        */
+
+        console.log(
+            "Autoplay blocked. Waiting for user interaction."
+        );
+
+    });
+
+});
+
+
+/*
+   Start music after user interaction.
+*/
+
+function startMusic() {
+
+    music.volume = 0.50;
+
+    music.play().catch(function(error) {
+
+        console.log(error);
+
+    });
+
+}
+
+
+/* ==================================================
+   PAGE 1 → PAGE 2
+   START HERE
+   ================================================== */
+
+document
+    .getElementById("startHere")
+    .addEventListener("click", function() {
+
+        startMusic();
+
+        showPage(2);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 2 → PAGE 3
+   OPEN
+   ================================================== */
+
+document
+    .getElementById("openButton")
+    .addEventListener("click", function() {
+
+        startMusic();
+
+        showPage(3);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 3 → PAGE 4
+   YOU'RE SAD
+   ================================================== */
+
+document
+    .getElementById("sadButton")
+    .addEventListener("click", function() {
+
+        startMusic();
+
+        showPage(4);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 3 → PAGE 5
+   YOU'RE MAD
+   ================================================== */
+
+document
+    .getElementById("madButton")
+    .addEventListener("click", function() {
+
+        startMusic();
+
+        showPage(5);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 3 → PAGE 6
+   YOU MISS ME
+   ================================================== */
+
+document
+    .getElementById("missButton")
+    .addEventListener("click", function() {
+
+        startMusic();
+
+        showPage(6);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 3 → PAGE 7
+   YOU'RE JEALOUS
+   ================================================== */
+
+document
+    .getElementById("jealousButton")
+    .addEventListener("click", function() {
+
+        startMusic();
+
+        showPage(7);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 4 → PAGE 3
+   GO BACK
+   ================================================== */
+
+document
+    .getElementById("backFromSad")
+    .addEventListener("click", function() {
+
+        showPage(3);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 5 → PAGE 3
+   GO BACK
+   ================================================== */
+
+document
+    .getElementById("backFromMad")
+    .addEventListener("click", function() {
+
+        showPage(3);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 6 → PAGE 3
+   GO BACK
+   ================================================== */
+
+document
+    .getElementById("backFromMiss")
+    .addEventListener("click", function() {
+
+        showPage(3);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 7 → PAGE 8
+   AND THE LAST ONE
+   ================================================== */
+
+document
+    .getElementById("lastOne")
+    .addEventListener("click", function() {
+
+        startMusic();
+
+        showPage(8);
+
+    });
+
+
+
+/* ==================================================
+   PAGE 8 → PAGE 1
+   BACK TO START
+   ================================================== */
+
+document
+    .getElementById("backToStart")
+    .addEventListener("click", function() {
+
+        showPage(1);
+
+    });
+
+</script>
+
+
+</body>
+
+      </html>
