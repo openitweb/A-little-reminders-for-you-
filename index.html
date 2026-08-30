@@ -6,18 +6,19 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
 
 <title>A Little Reminder for You</title>
 
+
 <style>
 
-/* =========================
+/* =====================================
    RESET
-========================= */
+===================================== */
 
 * {
     margin: 0;
@@ -29,24 +30,19 @@ html,
 body {
     width: 100%;
     height: 100%;
+
     overflow: hidden;
+
+    background: #ffffff;
 }
 
 
-/* =========================
-   BACKGROUND
-========================= */
-
-body {
-    background: #ffd9e8;
-}
-
-
-/* =========================
+/* =====================================
    PAGE
-========================= */
+===================================== */
 
 .page {
+
     position: fixed;
 
     inset: 0;
@@ -56,28 +52,37 @@ body {
 
     display: none;
 
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
 
-    background: #ffd9e8;
+    background: #ffffff;
 }
 
 .page.active {
-    display: flex;
+    display: block;
 }
 
 
-/* =========================
+/* =====================================
    IMAGE
-========================= */
 
-.page img {
+   COVER = walang pink sa left/right
+===================================== */
+
+.page-image {
+
     position: absolute;
+
+    left: 50%;
+    top: 50%;
 
     width: 100vw;
     height: 100vh;
 
-    object-fit: contain;
+    transform: translate(-50%, -50%);
+
+    object-fit: cover;
+
+    object-position: center center;
 
     display: block;
 
@@ -89,11 +94,12 @@ body {
 }
 
 
-/* =========================
-   CLICK AREA
-========================= */
+/* =====================================
+   CLICKABLE AREA
+===================================== */
 
 .click {
+
     position: absolute;
 
     display: block;
@@ -104,169 +110,224 @@ body {
 
     border: none;
 
+    outline: none;
+
     cursor: pointer;
 
     touch-action: manipulation;
 
     -webkit-tap-highlight-color: transparent;
+
+    user-select: none;
 }
 
 
-/* =====================================================
+/* =====================================
    PAGE 1
-   BUTTON = BOTTOM CENTER
-===================================================== */
 
-.p1 {
+   OPEN THIS
+   6% higher
+===================================== */
+
+.page1-button {
+
     width: 160px;
-    height: 60px;
+    height: 58px;
 
     left: 50%;
-    bottom: 6%;
+
+    top: 77%;
 
     transform: translateX(-50%);
 }
 
 
-/* =====================================================
+/* =====================================
    PAGE 2
-   BUTTON = BOTTOM CENTER
-===================================================== */
 
-.p2 {
+   BUTTON
+   6% higher
+===================================== */
+
+.page2-button {
+
     width: 160px;
-    height: 60px;
+    height: 58px;
 
     left: 50%;
-    bottom: 6%;
+
+    top: 77%;
 
     transform: translateX(-50%);
 }
 
 
-/* =====================================================
+/* =====================================
    PAGE 3
-   FOUR BUTTONS
-   MIDDLE
-===================================================== */
 
-.p3-1 {
-    width: 145px;
-    height: 55px;
+   EMOTION BUTTONS
+===================================== */
 
-    left: 50%;
-    top: 37%;
 
-    transform: translateX(-50%);
-}
+/* YOU'RE SAD */
 
-.p3-2 {
-    width: 145px;
-    height: 55px;
+.page3-sad {
+
+    width: 150px;
+    height: 52px;
 
     left: 50%;
-    top: 48%;
-
-    transform: translateX(-50%);
-}
-
-.p3-3 {
-    width: 145px;
-    height: 55px;
-
-    left: 50%;
-    top: 59%;
-
-    transform: translateX(-50%);
-}
-
-.p3-4 {
-    width: 145px;
-    height: 55px;
-
-    left: 50%;
-    top: 70%;
+    top: 34%;
 
     transform: translateX(-50%);
 }
 
 
-/* =====================================================
+/* YOU'RE MAD */
+
+.page3-mad {
+
+    width: 150px;
+    height: 52px;
+
+    left: 50%;
+    top: 45%;
+
+    transform: translateX(-50%);
+}
+
+
+/* YOU MISS ME */
+
+.page3-miss {
+
+    width: 150px;
+    height: 52px;
+
+    left: 50%;
+    top: 56%;
+
+    transform: translateX(-50%);
+}
+
+
+/* YOU'RE JEALOUS
+   7% higher
+*/
+
+.page3-jealous {
+
+    width: 150px;
+    height: 52px;
+
+    left: 50%;
+    top: 62%;
+
+    transform: translateX(-50%);
+}
+
+
+/* =====================================
    PAGE 4
-   BOTTOM LEFT
-===================================================== */
 
-.p4 {
+   GO BACK
+   slightly higher
+===================================== */
+
+.page4-button {
+
     width: 135px;
-    height: 55px;
+    height: 52px;
 
-    left: 7%;
-    bottom: 6%;
+    left: 50%;
+    top: 83%;
+
+    transform: translateX(-50%);
 }
 
 
-/* =====================================================
+/* =====================================
    PAGE 5
-   BOTTOM LEFT
-===================================================== */
 
-.p5 {
+   GO BACK
+   3% higher
+===================================== */
+
+.page5-button {
+
     width: 135px;
-    height: 55px;
+    height: 52px;
 
-    left: 7%;
-    bottom: 6%;
+    left: 50%;
+    top: 80%;
+
+    transform: translateX(-50%);
 }
 
 
-/* =====================================================
+/* =====================================
    PAGE 6
-   BOTTOM LEFT
-   HIGHER THAN PAGE 5
-===================================================== */
 
-.p6 {
+   GO BACK
+   8% higher
+===================================== */
+
+.page6-button {
+
     width: 135px;
-    height: 55px;
+    height: 52px;
 
-    left: 7%;
-    bottom: 13%;
+    left: 50%;
+    top: 75%;
+
+    transform: translateX(-50%);
 }
 
 
-/* =====================================================
+/* =====================================
    PAGE 7
-   BOTTOM LEFT
-===================================================== */
 
-.p7 {
-    width: 135px;
-    height: 55px;
+   AND THE LAST ONE
+   slightly higher
+===================================== */
 
-    left: 7%;
-    bottom: 6%;
+.page7-button {
+
+    width: 160px;
+    height: 52px;
+
+    left: 50%;
+    top: 82%;
+
+    transform: translateX(-50%);
 }
 
 
-/* =====================================================
+/* =====================================
    PAGE 8
-   BOTTOM RIGHT
-===================================================== */
 
-.p8 {
-    width: 125px;
-    height: 55px;
+   BACK TO START
+   slightly higher
+===================================== */
 
-    right: 6%;
-    bottom: 6%;
+.page8-button {
+
+    width: 155px;
+    height: 52px;
+
+    left: 50%;
+    top: 82%;
+
+    transform: translateX(-50%);
 }
 
 
-/* =========================
+/* =====================================
    MUSIC BUTTON
-========================= */
+===================================== */
 
-.music {
+.music-button {
+
     position: fixed;
 
     top: 10px;
@@ -277,11 +338,11 @@ body {
 
     z-index: 1000;
 
-    border: 2px solid white;
+    border: 2px solid #ffffff;
 
     background: #e978a7;
 
-    color: white;
+    color: #ffffff;
 
     font-size: 16px;
 
@@ -293,37 +354,69 @@ body {
 }
 
 
-/* =========================
+/* =====================================
    MOBILE
-========================= */
+===================================== */
 
 @media (max-width: 600px) {
 
-    .p1,
-    .p2 {
+    .page-image {
+
+        width: 100vw;
+        height: 100vh;
+
+        object-fit: cover;
+
+    }
+
+
+    .page1-button,
+    .page2-button {
+
         width: 150px;
         height: 55px;
+
     }
 
-    .p3-1,
-    .p3-2,
-    .p3-3,
-    .p3-4 {
-        width: 140px;
+
+    .page3-sad,
+    .page3-mad,
+    .page3-miss,
+    .page3-jealous {
+
+        width: 145px;
         height: 52px;
+
     }
 
-    .p4,
-    .p5,
-    .p6,
-    .p7 {
+
+    .page4-button,
+    .page5-button,
+    .page6-button {
+
         width: 130px;
-        height: 52px;
+        height: 50px;
+
     }
 
-    .p8 {
-        width: 120px;
-        height: 52px;
+
+    .page7-button,
+    .page8-button {
+
+        width: 150px;
+        height: 50px;
+
+    }
+
+
+    .music-button {
+
+        width: 38px;
+        height: 38px;
+
+        top: 8px;
+        right: 8px;
+
     }
 
 }
@@ -333,248 +426,269 @@ body {
 </head>
 
 
+
 <body>
 
 
-<!-- =========================
+<!-- =====================================
      MUSIC
-========================= -->
+===================================== -->
 
 <audio
-id="music"
-src="music.mp3"
-loop>
+    id="music"
+    src="music.mp3"
+    loop>
 </audio>
 
 
-<!-- =========================
+
+<!-- =====================================
      MUSIC CONTROL
-========================= -->
+===================================== -->
 
 <button
-class="music"
-id="musicButton"
-onclick="toggleMusic()">
+    id="musicButton"
+    class="music-button"
+    type="button"
+    onclick="toggleMusic()">
 
-♫
+    ♫
 
 </button>
 
 
 
-<!-- ==================================================
+<!-- =====================================
      PAGE 1
-================================================== -->
+===================================== -->
 
 <section
-class="page active"
-id="page1">
+    class="page active"
+    id="page1">
 
-<img
-src="page1.jpg"
-alt="Page 1">
+    <img
+        src="page1.jpg"
+        class="page-image"
+        alt="Page 1">
 
-<a
-href="#page2"
-class="click p1"
-onclick="go(2); return false;"
-aria-label="Open Page 2">
-</a>
+    <a
+        href="#page2"
+        class="click page1-button"
+        onclick="goToPage(2); return false;"
+        aria-label="Open">
+
+    </a>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =====================================
      PAGE 2
-================================================== -->
+===================================== -->
 
 <section
-class="page"
-id="page2">
+    class="page"
+    id="page2">
 
-<img
-src="page2.jpg"
-alt="Page 2">
+    <img
+        src="page2.jpg"
+        class="page-image"
+        alt="Page 2">
 
-<a
-href="#page3"
-class="click p2"
-onclick="go(3); return false;"
-aria-label="Open Page 3">
-</a>
+    <a
+        href="#page3"
+        class="click page2-button"
+        onclick="goToPage(3); return false;"
+        aria-label="Open">
+
+    </a>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =====================================
      PAGE 3
-     FOUR BUTTONS
-================================================== -->
+===================================== -->
 
 <section
-class="page"
-id="page3">
+    class="page"
+    id="page3">
 
-<img
-src="page3.jpg"
-alt="Page 3">
-
-
-<!-- BUTTON 1 -->
-
-<a
-href="#page4"
-class="click p3-1"
-onclick="go(4); return false;"
-aria-label="Open Page 4">
-</a>
+    <img
+        src="page3.jpg"
+        class="page-image"
+        alt="Choose an emotion">
 
 
-<!-- BUTTON 2 -->
+    <!-- YOU'RE SAD -->
 
-<a
-href="#page5"
-class="click p3-2"
-onclick="go(5); return false;"
-aria-label="Open Page 5">
-</a>
+    <a
+        href="#page4"
+        class="click page3-sad"
+        onclick="goToPage(4); return false;"
+        aria-label="You're Sad">
 
-
-<!-- BUTTON 3 -->
-
-<a
-href="#page6"
-class="click p3-3"
-onclick="go(6); return false;"
-aria-label="Open Page 6">
-</a>
+    </a>
 
 
-<!-- BUTTON 4 -->
+    <!-- YOU'RE MAD -->
 
-<a
-href="#page7"
-class="click p3-4"
-onclick="go(7); return false;"
-aria-label="Open Page 7">
-</a>
+    <a
+        href="#page5"
+        class="click page3-mad"
+        onclick="goToPage(5); return false;"
+        aria-label="You're Mad">
+
+    </a>
+
+
+    <!-- YOU MISS ME -->
+
+    <a
+        href="#page6"
+        class="click page3-miss"
+        onclick="goToPage(6); return false;"
+        aria-label="You Miss Me">
+
+    </a>
+
+
+    <!-- YOU'RE JEALOUS -->
+
+    <a
+        href="#page7"
+        class="click page3-jealous"
+        onclick="goToPage(7); return false;"
+        aria-label="You're Jealous">
+
+    </a>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =====================================
      PAGE 4
-================================================== -->
+===================================== -->
 
 <section
-class="page"
-id="page4">
+    class="page"
+    id="page4">
 
-<img
-src="page4.jpg"
-alt="Page 4">
+    <img
+        src="page4.jpg"
+        class="page-image"
+        alt="You're Sad">
 
-<a
-href="#page3"
-class="click p4"
-onclick="go(3); return false;"
-aria-label="Back">
-</a>
+    <a
+        href="#page3"
+        class="click page4-button"
+        onclick="goToPage(3); return false;"
+        aria-label="Go Back">
+
+    </a>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =====================================
      PAGE 5
-================================================== -->
+===================================== -->
 
 <section
-class="page"
-id="page5">
+    class="page"
+    id="page5">
 
-<img
-src="page5.jpg"
-alt="Page 5">
+    <img
+        src="page5.jpg"
+        class="page-image"
+        alt="You're Mad">
 
-<a
-href="#page3"
-class="click p5"
-onclick="go(3); return false;"
-aria-label="Back">
-</a>
+    <a
+        href="#page3"
+        class="click page5-button"
+        onclick="goToPage(3); return false;"
+        aria-label="Go Back">
+
+    </a>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =====================================
      PAGE 6
-================================================== -->
+===================================== -->
 
 <section
-class="page"
-id="page6">
+    class="page"
+    id="page6">
 
-<img
-src="page6.jpg"
-alt="Page 6">
+    <img
+        src="page6.jpg"
+        class="page-image"
+        alt="You Miss Me">
 
-<a
-href="#page3"
-class="click p6"
-onclick="go(3); return false;"
-aria-label="Back">
-</a>
+    <a
+        href="#page3"
+        class="click page6-button"
+        onclick="goToPage(3); return false;"
+        aria-label="Go Back">
+
+    </a>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =====================================
      PAGE 7
-================================================== -->
+===================================== -->
 
 <section
-class="page"
-id="page7">
+    class="page"
+    id="page7">
 
-<img
-src="page7.jpg"
-alt="Page 7">
+    <img
+        src="page7.jpg"
+        class="page-image"
+        alt="You're Jealous">
 
-<a
-href="#page8"
-class="click p7"
-onclick="go(8); return false;"
-aria-label="Next">
-</a>
+    <a
+        href="#page8"
+        class="click page7-button"
+        onclick="goToPage(8); return false;"
+        aria-label="And the Last One">
+
+    </a>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =====================================
      PAGE 8
-================================================== -->
+===================================== -->
 
 <section
-class="page"
-id="page8">
+    class="page"
+    id="page8">
 
-<img
-src="page8.jpg"
-alt="Before you leave">
+    <img
+        src="page8.jpg"
+        class="page-image"
+        alt="Before you leave">
 
-<a
-href="#page1"
-class="click p8"
-onclick="go(1); return false;"
-aria-label="Start again">
-</a>
+    <a
+        href="#page1"
+        class="click page8-button"
+        onclick="backToStart(); return false;"
+        aria-label="Back to Start">
+
+    </a>
 
 </section>
 
@@ -582,11 +696,30 @@ aria-label="Start again">
 
 <script>
 
-/* =========================================
-   PAGE NAVIGATION
-========================================= */
+/* =====================================
+   MUSIC
+===================================== */
 
-function go(number) {
+const music =
+    document.getElementById("music");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+
+/*
+   VOLUME = 20%
+*/
+
+music.volume = 0.20;
+
+
+
+/* =====================================
+   PAGE NAVIGATION
+===================================== */
+
+function goToPage(number) {
 
     const pages =
         document.querySelectorAll(".page");
@@ -624,32 +757,53 @@ function go(number) {
 }
 
 
-/* =========================================
-   MUSIC
-========================================= */
 
-const music =
-    document.getElementById("music");
+/* =====================================
+   BACK TO START
+===================================== */
 
-const musicButton =
-    document.getElementById("musicButton");
+function backToStart() {
 
+    /*
+       Restart music from the intro
+    */
+
+    music.currentTime = 0;
+
+    music.volume = 0.20;
+
+
+    music.play()
+        .catch(function() {});
+
+
+    /*
+       Return to Page 1
+    */
+
+    goToPage(1);
+
+}
+
+
+
+/* =====================================
+   MUSIC ON/OFF
+===================================== */
 
 function toggleMusic() {
 
     if (music.paused) {
 
+        music.volume = 0.20;
+
         music.play()
-        .then(function() {
+            .then(function() {
 
-            musicButton.textContent = "♫";
+                musicButton.textContent = "♫";
 
-        })
-        .catch(function() {
-
-            musicButton.textContent = "♫";
-
-        });
+            })
+            .catch(function() {});
 
     }
 
@@ -664,24 +818,24 @@ function toggleMusic() {
 }
 
 
-/* =========================================
-   START MUSIC AFTER FIRST TOUCH
-========================================= */
+
+/* =====================================
+   FIRST TOUCH STARTS MUSIC
+===================================== */
 
 document.addEventListener(
     "pointerdown",
-    function startMusic() {
+    function firstTouch() {
 
-        if (music.paused) {
+        music.volume = 0.20;
 
-            music.play()
+        music.play()
             .catch(function() {});
 
-        }
 
         document.removeEventListener(
             "pointerdown",
-            startMusic
+            firstTouch
         );
 
     },
@@ -691,9 +845,10 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   LOAD PAGE FROM URL
-========================================= */
+
+/* =====================================
+   DIRECT PAGE OPEN
+===================================== */
 
 window.addEventListener(
     "load",
@@ -719,7 +874,7 @@ window.addEventListener(
                 number <= 8
             ) {
 
-                go(number);
+                goToPage(number);
 
             }
 
@@ -732,4 +887,4 @@ window.addEventListener(
 
 
 </body>
-      </html>
+   </html>
