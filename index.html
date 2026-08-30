@@ -15,9 +15,9 @@ user-scalable=no">
 
 <style>
 
-/* ==================================================
+/* =================================================
    RESET
-================================================== */
+================================================= */
 
 * {
     margin: 0;
@@ -31,6 +31,9 @@ body {
     width: 100%;
     height: 100%;
 
+    margin: 0;
+    padding: 0;
+
     overflow: hidden;
 
     background: #000;
@@ -39,9 +42,9 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE
-================================================== */
+================================================= */
 
 .page {
 
@@ -64,15 +67,40 @@ body {
 }
 
 
-/* ==================================================
-   400 × 800 DESIGN CANVAS
+/* =================================================
+   FULL SCREEN STAGE
 
-   IMPORTANT:
-   The image AND transparent buttons
-   are inside this same canvas.
+   The stage is ALWAYS the exact size
+   of the phone screen.
 
-   Therefore they ALWAYS scale together.
-================================================== */
+   The artwork is centered inside it.
+================================================= */
+
+.stage {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: #000;
+
+    pointer-events: none;
+}
+
+
+/* =================================================
+   400 × 800 DESIGN
+
+   IMAGE + BUTTONS ARE INSIDE THE SAME
+   TRANSFORMED DESIGN.
+
+   Therefore they scale together.
+================================================= */
 
 .canvas {
 
@@ -90,22 +118,17 @@ body {
 
     transform-origin: center center;
 
-    overflow: hidden;
-
-    /*
-       Prevent the canvas itself
-       from receiving clicks.
-    */
+    overflow: visible;
 
     pointer-events: none;
 }
 
 
-/* ==================================================
+/* =================================================
    IMAGE
 
-   EXACTLY 400 × 800
-================================================== */
+   400 × 800
+================================================= */
 
 .page-image {
 
@@ -117,28 +140,23 @@ body {
     width: 400px;
     height: 800px;
 
-    /*
-       Image fills the entire
-       design canvas.
-    */
+    display: block;
 
     object-fit: fill;
-
-    display: block;
 
     pointer-events: none;
 
     user-select: none;
 
+    -webkit-user-select: none;
+
     -webkit-user-drag: none;
 }
 
 
-/* ==================================================
-   TRANSPARENT BUTTONS
-
-   Only these areas are clickable.
-================================================== */
+/* =================================================
+   TRANSPARENT CLICKABLE RECTANGLES
+================================================= */
 
 .click {
 
@@ -152,16 +170,11 @@ body {
 
     outline: none;
 
-    z-index: 100;
-
-    cursor: pointer;
-
-    /*
-       The button itself receives
-       the touch/click.
-    */
+    z-index: 9999;
 
     pointer-events: auto;
+
+    cursor: pointer;
 
     touch-action: manipulation;
 
@@ -171,12 +184,10 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE 1
    START HERE
-
-   268 × 48
-================================================== */
+================================================= */
 
 .page1-button {
 
@@ -188,12 +199,10 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE 2
    OPEN
-
-   210 × 42
-================================================== */
+================================================= */
 
 .page2-button {
 
@@ -205,12 +214,9 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE 3
-   EMOTION BUTTONS
-
-   248 × 44
-================================================== */
+================================================= */
 
 .page3-sad {
 
@@ -252,10 +258,9 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE 4
-   GO BACK
-================================================== */
+================================================= */
 
 .page4-button {
 
@@ -267,10 +272,9 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE 5
-   GO BACK
-================================================== */
+================================================= */
 
 .page5-button {
 
@@ -282,15 +286,9 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE 6
-   GO BACK
-
-   210 × 42
-   190px FROM BOTTOM
-
-   800 - 190 - 42 = 568
-================================================== */
+================================================= */
 
 .page6-button {
 
@@ -302,10 +300,9 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE 7
-   AND THE LAST ONE
-================================================== */
+================================================= */
 
 .page7-button {
 
@@ -317,10 +314,9 @@ body {
 }
 
 
-/* ==================================================
+/* =================================================
    PAGE 8
-   BACK TO START
-================================================== */
+================================================= */
 
 .page8-button {
 
@@ -332,28 +328,13 @@ body {
 }
 
 
-/* ==================================================
-   PREVENT IMAGE DRAGGING
-================================================== */
-
-img {
-
-    pointer-events: none;
-
-    user-select: none;
-
-    -webkit-user-select: none;
-
-    -webkit-user-drag: none;
-}
-
-
-/* ==================================================
+/* =================================================
    NO SCROLL
-================================================== */
+================================================= */
 
 body,
-.page {
+.page,
+.stage {
 
     overscroll-behavior: none;
 }
@@ -366,9 +347,9 @@ body,
 <body>
 
 
-<!-- ==================================================
+<!-- =================================================
      MUSIC
-================================================== -->
+================================================= -->
 
 <audio
     id="music"
@@ -378,28 +359,31 @@ body,
 
 
 
-<!-- ==================================================
+<!-- =================================================
      PAGE 1
-================================================== -->
+================================================= -->
 
 <section
     class="page active"
     id="page1">
 
-    <div class="canvas">
+    <div class="stage">
 
-        <img
-            src="page1.jpg"
-            class="page-image"
-            alt="Page 1">
+        <div class="canvas">
 
+            <img
+                src="page1.jpg"
+                class="page-image"
+                alt="Page 1">
 
-        <a
-            href="#page2"
-            class="click page1-button"
-            onclick="startSurprise(); return false;"
-            aria-label="START HERE">
-        </a>
+            <a
+                href="#page2"
+                class="click page1-button"
+                onclick="startSurprise(); return false;"
+                aria-label="START HERE">
+            </a>
+
+        </div>
 
     </div>
 
@@ -407,28 +391,31 @@ body,
 
 
 
-<!-- ==================================================
+<!-- =================================================
      PAGE 2
-================================================== -->
+================================================= -->
 
 <section
     class="page"
     id="page2">
 
-    <div class="canvas">
+    <div class="stage">
 
-        <img
-            src="page2.jpg"
-            class="page-image"
-            alt="Page 2">
+        <div class="canvas">
 
+            <img
+                src="page2.jpg"
+                class="page-image"
+                alt="Page 2">
 
-        <a
-            href="#page3"
-            class="click page2-button"
-            onclick="goToPage(3); return false;"
-            aria-label="OPEN">
-        </a>
+            <a
+                href="#page3"
+                class="click page2-button"
+                onclick="goToPage(3); return false;"
+                aria-label="OPEN">
+            </a>
+
+        </div>
 
     </div>
 
@@ -436,52 +423,52 @@ body,
 
 
 
-<!-- ==================================================
+<!-- =================================================
      PAGE 3
-================================================== -->
+================================================= -->
 
 <section
     class="page"
     id="page3">
 
-    <div class="canvas">
+    <div class="stage">
 
-        <img
-            src="page3.jpg"
-            class="page-image"
-            alt="Choose an emotion">
+        <div class="canvas">
 
+            <img
+                src="page3.jpg"
+                class="page-image"
+                alt="Choose an emotion">
 
-        <a
-            href="#page4"
-            class="click page3-sad"
-            onclick="goToPage(4); return false;"
-            aria-label="YOU'RE SAD">
-        </a>
+            <a
+                href="#page4"
+                class="click page3-sad"
+                onclick="goToPage(4); return false;"
+                aria-label="YOU'RE SAD">
+            </a>
 
+            <a
+                href="#page5"
+                class="click page3-mad"
+                onclick="goToPage(5); return false;"
+                aria-label="YOU'RE MAD">
+            </a>
 
-        <a
-            href="#page5"
-            class="click page3-mad"
-            onclick="goToPage(5); return false;"
-            aria-label="YOU'RE MAD">
-        </a>
+            <a
+                href="#page6"
+                class="click page3-miss"
+                onclick="goToPage(6); return false;"
+                aria-label="YOU MISS ME">
+            </a>
 
+            <a
+                href="#page7"
+                class="click page3-jealous"
+                onclick="goToPage(7); return false;"
+                aria-label="YOU'RE JEALOUS">
+            </a>
 
-        <a
-            href="#page6"
-            class="click page3-miss"
-            onclick="goToPage(6); return false;"
-            aria-label="YOU MISS ME">
-        </a>
-
-
-        <a
-            href="#page7"
-            class="click page3-jealous"
-            onclick="goToPage(7); return false;"
-            aria-label="YOU'RE JEALOUS">
-        </a>
+        </div>
 
     </div>
 
@@ -489,28 +476,31 @@ body,
 
 
 
-<!-- ==================================================
+<!-- =================================================
      PAGE 4
-================================================== -->
+================================================= -->
 
 <section
     class="page"
     id="page4">
 
-    <div class="canvas">
+    <div class="stage">
 
-        <img
-            src="page4.jpg"
-            class="page-image"
-            alt="You're Sad">
+        <div class="canvas">
 
+            <img
+                src="page4.jpg"
+                class="page-image"
+                alt="You're Sad">
 
-        <a
-            href="#page3"
-            class="click page4-button"
-            onclick="goToPage(3); return false;"
-            aria-label="GO BACK">
-        </a>
+            <a
+                href="#page3"
+                class="click page4-button"
+                onclick="goToPage(3); return false;"
+                aria-label="GO BACK">
+            </a>
+
+        </div>
 
     </div>
 
@@ -518,28 +508,31 @@ body,
 
 
 
-<!-- ==================================================
+<!-- =================================================
      PAGE 5
-================================================== -->
+================================================= -->
 
 <section
     class="page"
     id="page5">
 
-    <div class="canvas">
+    <div class="stage">
 
-        <img
-            src="page5.jpg"
-            class="page-image"
-            alt="You're Mad">
+        <div class="canvas">
 
+            <img
+                src="page5.jpg"
+                class="page-image"
+                alt="You're Mad">
 
-        <a
-            href="#page3"
-            class="click page5-button"
-            onclick="goToPage(3); return false;"
-            aria-label="GO BACK">
-        </a>
+            <a
+                href="#page3"
+                class="click page5-button"
+                onclick="goToPage(3); return false;"
+                aria-label="GO BACK">
+            </a>
+
+        </div>
 
     </div>
 
@@ -547,28 +540,31 @@ body,
 
 
 
-<!-- ==================================================
+<!-- =================================================
      PAGE 6
-================================================== -->
+================================================= -->
 
 <section
     class="page"
     id="page6">
 
-    <div class="canvas">
+    <div class="stage">
 
-        <img
-            src="page6.jpg"
-            class="page-image"
-            alt="You Miss Me">
+        <div class="canvas">
 
+            <img
+                src="page6.jpg"
+                class="page-image"
+                alt="You Miss Me">
 
-        <a
-            href="#page3"
-            class="click page6-button"
-            onclick="goToPage(3); return false;"
-            aria-label="GO BACK">
-        </a>
+            <a
+                href="#page3"
+                class="click page6-button"
+                onclick="goToPage(3); return false;"
+                aria-label="GO BACK">
+            </a>
+
+        </div>
 
     </div>
 
@@ -576,28 +572,31 @@ body,
 
 
 
-<!-- ==================================================
+<!-- =================================================
      PAGE 7
-================================================== -->
+================================================= -->
 
 <section
     class="page"
     id="page7">
 
-    <div class="canvas">
+    <div class="stage">
 
-        <img
-            src="page7.jpg"
-            class="page-image"
-            alt="Special Page">
+        <div class="canvas">
 
+            <img
+                src="page7.jpg"
+                class="page-image"
+                alt="Special Page">
 
-        <a
-            href="#page8"
-            class="click page7-button"
-            onclick="goToPage(8); return false;"
-            aria-label="AND THE LAST ONE">
-        </a>
+            <a
+                href="#page8"
+                class="click page7-button"
+                onclick="goToPage(8); return false;"
+                aria-label="AND THE LAST ONE">
+            </a>
+
+        </div>
 
     </div>
 
@@ -605,28 +604,31 @@ body,
 
 
 
-<!-- ==================================================
+<!-- =================================================
      PAGE 8
-================================================== -->
+================================================= -->
 
 <section
     class="page"
     id="page8">
 
-    <div class="canvas">
+    <div class="stage">
 
-        <img
-            src="page8.jpg"
-            class="page-image"
-            alt="Before You Leave">
+        <div class="canvas">
 
+            <img
+                src="page8.jpg"
+                class="page-image"
+                alt="Before You Leave">
 
-        <a
-            href="#page1"
-            class="click page8-button"
-            onclick="backToStart(); return false;"
-            aria-label="BACK TO START">
-        </a>
+            <a
+                href="#page1"
+                class="click page8-button"
+                onclick="backToStart(); return false;"
+                aria-label="BACK TO START">
+            </a>
+
+        </div>
 
     </div>
 
@@ -636,19 +638,14 @@ body,
 
 <script>
 
-/* ==================================================
+/* =================================================
    FULL SCREEN SCALING
 
-   BASE DESIGN = 400 × 800
+   400 × 800 DESIGN
 
-   IMPORTANT:
-   The ENTIRE canvas is scaled.
-
-   Image + buttons = ONE UNIT.
-
-   Therefore buttons can never
-   move away from their image.
-================================================== */
+   The image and transparent buttons
+   are scaled as ONE GROUP.
+================================================= */
 
 function resizeCanvas() {
 
@@ -667,9 +664,14 @@ function resizeCanvas() {
 
 
     /*
-       Use the larger scale so the
-       artwork completely fills
-       the phone screen.
+       COVER MODE
+
+       Math.max means the artwork
+       is always large enough to
+       cover the ENTIRE screen.
+
+       This removes white/pink
+       strips on the sides AND top.
     */
 
     const scale =
@@ -688,19 +690,20 @@ function resizeCanvas() {
 }
 
 
-/* First calculation */
+/* Initial */
 
 resizeCanvas();
 
 
-/* Recalculate whenever
-   the phone changes size */
+/* Phone resize */
 
 window.addEventListener(
     "resize",
     resizeCanvas
 );
 
+
+/* Phone rotation */
 
 window.addEventListener(
     "orientationchange",
@@ -709,9 +712,9 @@ window.addEventListener(
 
 
 
-/* ==================================================
+/* =================================================
    MUSIC
-================================================== */
+================================================= */
 
 const music =
     document.getElementById(
@@ -720,16 +723,16 @@ const music =
 
 
 /*
-   Volume = 20%
+   20% volume
 */
 
 music.volume = 0.20;
 
 
 
-/* ==================================================
+/* =================================================
    PAGE NAVIGATION
-================================================== */
+================================================= */
 
 function goToPage(number) {
 
@@ -776,21 +779,17 @@ function goToPage(number) {
         "",
         "#page" + number
     );
-
 }
 
 
 
-/* ==================================================
+/* =================================================
    START HERE
-================================================== */
+
+   Starts music immediately.
+================================================= */
 
 function startSurprise() {
-
-    /*
-       Start music from
-       the beginning.
-    */
 
     music.pause();
 
@@ -798,13 +797,6 @@ function startSurprise() {
 
     music.volume = 0.20;
 
-
-    /*
-       Because this function is
-       triggered by START HERE,
-       mobile browsers allow
-       playback.
-    */
 
     const playPromise =
         music.play();
@@ -818,7 +810,7 @@ function startSurprise() {
             function(error) {
 
                 console.log(
-                    "Music error:",
+                    "Music playback error:",
                     error
                 );
 
@@ -828,56 +820,33 @@ function startSurprise() {
     }
 
 
-    /*
-       Go to Page 2.
-    */
-
     goToPage(2);
-
 }
 
 
 
-/* ==================================================
+/* =================================================
    BACK TO START
-================================================== */
+
+   Resets music to intro.
+================================================= */
 
 function backToStart() {
 
-    /*
-       Stop music.
-    */
-
     music.pause();
-
-
-    /*
-       Reset to intro.
-    */
 
     music.currentTime = 0;
 
-
-    /*
-       Keep volume at 20%.
-    */
-
     music.volume = 0.20;
 
-
-    /*
-       Return to Page 1.
-    */
-
     goToPage(1);
-
 }
 
 
 
-/* ==================================================
+/* =================================================
    PREVENT IMAGE DRAGGING
-================================================== */
+================================================= */
 
 document.addEventListener(
     "dragstart",
@@ -896,9 +865,9 @@ document.addEventListener(
 
 
 
-/* ==================================================
+/* =================================================
    HASH SUPPORT
-================================================== */
+================================================= */
 
 window.addEventListener(
     "load",
